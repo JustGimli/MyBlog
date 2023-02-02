@@ -1,0 +1,23 @@
+
+body {
+    margin: 0;
+}
+
+.Header-Menu {
+    position: fixed;
+    width: 100%;
+    margin: 0%;
+    padding: 0%;
+}
+
+
+
+/* animation */
+
+[data-aos="header"] {
+    background: rgb(109, 105, 105);
+    transition-property: background;
+    &.aos-animate {
+        background: red;
+    }
+}
