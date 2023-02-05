@@ -1,6 +1,7 @@
 
 body {
     margin: 0;
+    font-family: 'Ubuntu', sans-serif;
 }
 
 .Header-Menu {
@@ -8,6 +9,15 @@ body {
     width: 100%;
     margin: 0%;
     padding: 0%;
+    align-items: center;
+    justify-content: space-between; 
+    color: white;
+    li{
+       
+       list-style-type: none;
+       display: inline-block;
+    }
+    display: flex;
 }
 
 
@@ -15,9 +25,19 @@ body {
 /* animation */
 
 [data-aos="header"] {
-    background: rgb(109, 105, 105);
+    background: black;
+    height: 10%;
     transition-property: background;
+    border: {
+        bottom-left-radius: 0%;
+        bottom-right-radius: 0%;
+    };
     &.aos-animate {
-        background: red;
+        background: rgb(167, 29, 29);
+        height: 9%;
+        border: {
+            bottom-left-radius: 1%;
+            bottom-right-radius: 1%;
+        };
     }
 }

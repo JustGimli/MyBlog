@@ -13,16 +13,16 @@ class Header extends React.Component{
 
     }
 
+    mainMenu = ["Home", "Featured", "Stats"]
+    listItem = this.mainMenu.map((str) => <li key={str}>{str}</li>)
+
     render(): React.ReactNode {
         return(
             <div className="Header-Menu" data-aos="header"
             data-aos-offset='500' data-aos-anchor-placement="top-center"
             data-aos-duration="1500">
-                <ul>
-                    <li>Home</li>
-                    <li>Features</li>
-                    <li>Stats</li>
-                </ul>
+                <span>Just</span><span style={{"color": "red"}}>Gimli</span>
+                <ul>{this.listItem}</ul>
             </div>
         )
     }

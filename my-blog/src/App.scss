@@ -1,1 +1,19 @@
-@use './components/header/style.scss'
+@use './components/header/style.scss';
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+::-webkit-scrollbar-track {
+    background: black;
+}
+
+::-webkit-scrollbar-thumb {
+    background: red; 
+    border-radius: 10px;
+}
+
+
+::-webkit-scrollbar-thumb:hover {
+    background: #b30000; 
+}
