@@ -1,0 +1,50 @@
+.Header-Menu {
+    justify-content: space-between; 
+    display: flex;
+    align-items: center;
+    li{
+       list-style-type: none;
+       display: inline-block;
+    }
+    
+    
+    ul a {
+        color: white;
+        margin-left: 25px;
+        font: {
+            size: 18px;
+            weight: 500;
+        }
+
+        &:hover {
+            transition: color 0.3s ease;
+            color:  crimson;
+        }
+    }
+}
+
+.aos-animate .Header-Menu ul li a {
+    color: white;
+}
+
+.max-width {
+    margin: auto;
+    max-width: 1300px;
+    padding: 0px 80px;
+    @media (max-width: 1000px) {
+        padding: 0 30px;
+    }
+}
+
+.logo {
+    & a{
+        color: white;
+    }
+    font: {
+        size: 35px;
+        weight: 600;
+    }
+    .Header-Span {
+        color: crimson;
+    }
+}

@@ -1,5 +1,18 @@
-@use './components/header/style.scss';
-/* width */
+@use "./components/navbar/navbar.scss";
+
+[data-aos] {
+    pointer-events: auto;
+}
+
+*{
+    margin: 0;
+    font-family: 'Ubuntu', sans-serif;
+    text-decoration: none;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+// scroll
 ::-webkit-scrollbar {
     width: 10px;
 }
@@ -15,5 +28,5 @@
 
 
 ::-webkit-scrollbar-thumb:hover {
-    background: #b30000; 
+    background: crimson; 
 }

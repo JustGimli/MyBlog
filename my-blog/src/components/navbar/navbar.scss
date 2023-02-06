@@ -1,0 +1,33 @@
+@use "./header/style.scss";
+
+
+.navbar {
+    position: fixed;
+    width: 100%;
+    background: black;
+}
+
+
+
+/* animation */
+[data-aos="navbar"] {
+    background: black;
+    padding: 30px 0px;
+    transition-property: background, padding;
+    border: {
+        bottom-left-radius: 0%;
+        bottom-right-radius: 0%;
+    };
+    &.aos-animate {
+        .Header-Span{
+            color: white;
+        }
+        background:crimson;
+        padding: 15px 0px;
+        border: {
+            bottom-left-radius: 1%;
+            bottom-right-radius: 1%;
+        };
+    }
+}
+
