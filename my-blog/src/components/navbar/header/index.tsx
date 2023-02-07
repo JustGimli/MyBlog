@@ -13,15 +13,15 @@ class Header extends React.Component{
 
     }
 
-    mainMenu = ["Home", "Featured", "Stats", "Posts", "Contact"]
-    listItem = this.mainMenu.map((str) => <li key={str}><a href={str}>{str}</a></li>)
+    mainMenu = ["Home", "Features", "Stats", "Posts", "Contact"]
+    listItem = this.mainMenu.map((str) => <li key={str}><a href={`#${str}`.toLowerCase()}>{str}</a></li>)
 
     render(): React.ReactNode {
         return(
             <div className="max-width">
                 <div className="Header-Menu">
                     <div className="logo">
-                        <a href="#home">Just<span className="Header-Span">Gimli</span></a>
+                        <a href="https://github.com/JustGimli">Just<span className="Header-Span">Gimli</span></a>
                     </div>
                     <ul>{this.listItem}</ul>
                 </div>

@@ -17,6 +17,7 @@
         }
 
         &:hover {
+            text-shadow: 0 0 .1em, 0 0 .3em;
             transition: color 0.3s ease;
             color:  crimson;
         }
@@ -27,14 +28,6 @@
     color: white;
 }
 
-.max-width {
-    margin: auto;
-    max-width: 1300px;
-    padding: 0px 80px;
-    @media (max-width: 1000px) {
-        padding: 0 30px;
-    }
-}
 
 .logo {
     & a{

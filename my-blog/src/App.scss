@@ -1,4 +1,6 @@
 @use "./components/navbar/navbar.scss";
+@use "./components/Features/Features.scss";
+
 
 [data-aos] {
     pointer-events: auto;
@@ -10,6 +12,16 @@
     text-decoration: none;
     padding: 0;
     box-sizing: border-box;
+
+    .max-width {
+        margin: auto;
+        max-width: 1300px;
+        padding: 0px 80px;
+        @media (max-width: 1000px) {
+            padding: 0 30px;
+        }
+    }
+    
 }
 
 // scroll
