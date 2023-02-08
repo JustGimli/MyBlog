@@ -13,7 +13,7 @@ class Header extends React.Component{
 
     }
 
-    mainMenu = ["Home", "Features", "Stats", "Posts", "Contact"]
+    mainMenu = ["Home", "Features", "Skills", "Posts", "Contact"]
     listItem = this.mainMenu.map((str) => <li key={str}><a href={`#${str}`.toLowerCase()}>{str}</a></li>)
 
     render(): React.ReactNode {

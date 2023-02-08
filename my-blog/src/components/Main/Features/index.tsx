@@ -5,7 +5,7 @@ import FItem from "./f-item";
 
 
 export default function Featured(props: any) {
-    const ss = MyFeatures.Features.map((obj) => <FItem key={obj.title} title={obj.title} description={obj.description} aos={obj.aos} />)
+    const listItem = MyFeatures.Features.map((obj) => <FItem key={obj.title} title={obj.title} description={obj.description} aos={obj.aos} />)
 
     return(
         <section className="Features" id="features">
@@ -14,9 +14,7 @@ export default function Featured(props: any) {
                 <p>‒‒ <span>i can do a lot&gt;&lt;</span> ‒‒</p></h2>
                 
                 <div className="Features-list" >
-                {
-                    ss
-                }
+                {listItem}
                 </div>
             </div>
         </section>

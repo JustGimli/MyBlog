@@ -10,14 +10,13 @@ const Star:React.FC<IPropStar> = ({selected = false, onSelect = f => f }) => (
     <FaStar color={selected ? "red" : "grey"} onClick={onSelect} />
 );
 
-export default function StarRating({ style = {},totalStars = 5, ...props })  {
-    const [selectedStars, setSelectedStars ] = useState(0)
+export default function StarRating({ totalStars = 5,select=1 })  {
+    const [selectedStars, setSelectedStars ] = useState(select)
     
     const CreateArray = (length: number) => [...Array(length)]
 
     return(
         <>
-        <div style={{ padding: "5px", ...style }} {...props}>
             {CreateArray(totalStars).map((n,i) => (
             <Star
                 key={i}
@@ -25,10 +24,9 @@ export default function StarRating({ style = {},totalStars = 5, ...props })  {
                 onSelect={() => setSelectedStars(i + 1)}
             />
             ))}
-            <p>
+            {/* <p>
                 {selectedStars} of {totalStars}
-            </p>
-        </div>
+            </p> */}
         
         </>
     ) 

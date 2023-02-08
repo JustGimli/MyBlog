@@ -1,5 +1,6 @@
-@use "./components/navbar/navbar.scss";
-@use "./components/Features/Features.scss";
+@use "./components/Main/navbar/navbar.scss";
+@use "./components/Main/Features/Features.scss";
+@use "./components/Main/skills/skills.scss";
 
 
 [data-aos] {
