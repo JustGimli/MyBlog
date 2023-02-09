@@ -14,7 +14,7 @@ export default function SkillItem({ title, rate }:IProp) {
                 <div className="Box-Skills">
                     
                     <span className="Title-skills">{title}</span>
-                    <StarRating select={rate}/>                
+                    <span className="Stars"><StarRating select={rate}/></span>                
                 </div>
             </div>
         </>

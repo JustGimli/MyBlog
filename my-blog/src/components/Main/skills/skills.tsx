@@ -11,7 +11,7 @@ export default function Skills(props:any) {
                 
                 <h2 className="title">My Skills 
                 <p>‒‒ <span>I'm something known</span> ‒‒</p>
-                </h2>
+                </h2> 
                 <div className="skills-list">
                     {arrSkills}
                 </div>

@@ -25,7 +25,7 @@ function App() {
                 <Route path='/' errorElement={<ErrorPage/>} element={<MainPage />}></Route> 
                 <Route path='/posts' errorElement={<ErrorPage/>}></Route>
             </Routes> 
-        </BrowserRouter>
+        </BrowserRouter> 
 
             
         
