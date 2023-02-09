@@ -3,9 +3,9 @@ import AOS from 'aos';
 import 'aos/dist/aos.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
-import Navbar from './components/Main/navbar';
-import Featured from './components/Main/Features';
-import Skills from './components/Main/skills/skills';
+
+import MainPage from './routing';
+import ErrorPage from './components/error-page';
 
 import './App.scss'
 
@@ -18,23 +18,14 @@ function App() {
     }, [])
 
     return (
-        <>  
-        <Navbar/>
-        {/* <BrowserRouter> */}
-            {/* <Routes> */}
-                {/* <Route path='/'> */}
-                    <div className='background' style={{ "background": "#121212"}}>
-                    <canvas style={{"height": "100%", "width": "100%"}}></canvas>
-                    {/* <div>
-                        <StarRating />
-                    </div> */}
-                    <Featured/>
-                    <Skills/>
-                </div>
-                {/* </Route> */}
-                {/* <Route path='/posts'></Route> */}
-            {/* </Routes> */}
-        {/* </BrowserRouter> */}
+        <>
+        
+        <BrowserRouter> 
+            <Routes> 
+                <Route path='/' errorElement={<ErrorPage/>} element={<MainPage />}></Route> 
+                <Route path='/posts' errorElement={<ErrorPage/>}></Route>
+            </Routes> 
+        </BrowserRouter>
 
             
         
