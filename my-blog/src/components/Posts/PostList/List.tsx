@@ -6,7 +6,7 @@ import ex from "./ex.json";
 
 export default function PostList(props: any) {
 
-    const Items = ex.Posts.map( obj => <Item urlImg={obj.urlImg} title={obj.title} views={obj.views} text={obj.text} /> )
+    const Items = ex.Posts.map( obj => <Item  key={obj.title} urlImg={obj.urlImg} title={obj.title} views={obj.views} text={obj.text} /> )
 
     return (
         <div className="PostList"> 

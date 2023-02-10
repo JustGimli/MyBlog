@@ -5,7 +5,7 @@ import ContrItem from "./contrItem";
 
 export default function Contributors(props:any) {
 
-    const Contr = list.Contr.map((obj) =>  <ContrItem urlGit={obj.href_git} urlPhoto={obj.href_photo} name={obj.name} alt={obj.alt} />)
+    const Contr = list.Contr.map((obj) =>  <ContrItem  key={obj.name} urlGit={obj.href_git} urlPhoto={obj.href_photo} name={obj.name} alt={obj.alt} />)
 
     return (
         <>

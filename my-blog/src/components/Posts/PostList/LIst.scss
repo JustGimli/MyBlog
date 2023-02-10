@@ -1,9 +1,9 @@
 @use "./PostItem/style.scss";
 
 .PostList {
-
+    padding-top: 100px;
     display: flex;
-    justify-content: center;
+    justify-content: space-around;
     flex-direction: column;
     
 }

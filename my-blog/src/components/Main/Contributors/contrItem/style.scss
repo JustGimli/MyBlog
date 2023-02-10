@@ -50,18 +50,18 @@
     }
 
     &:hover {
-        
+        transition: background  0.6s ease;
         background: crimson;
         
         .Contr-Box{
             transform: scale(1.05);
+            transition: all  0.6s ease;
         }
 
         .Img {
             border-color: white;
-            transition: all  0.6s ease;
         }
 
-        transition: all  0.6s ease;
+        
     }
 }
