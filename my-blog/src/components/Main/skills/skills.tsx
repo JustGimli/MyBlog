@@ -8,7 +8,6 @@ export default function Skills(props:any) {
     return (
         <section className="Skills" id="skills">
         <div className="max-width">
-                
                 <h2 className="title">My Skills 
                 <p>‒‒ <span>I'm something known</span> ‒‒</p>
                 </h2> 

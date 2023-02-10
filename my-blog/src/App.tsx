@@ -14,7 +14,9 @@ import './App.scss'
 function App() {
 
     useEffect(() =>{
-        AOS.init();
+        AOS.init(
+            {duration: 900}
+        );
     }, [])
 
     return (

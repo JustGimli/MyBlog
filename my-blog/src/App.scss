@@ -1,7 +1,7 @@
 @use "./components/Main/navbar/navbar.scss";
 @use "./components/Main/Features/Features.scss";
 @use "./components/Main/skills/skills.scss";
-
+@use "./components/Main/Contributors/cont.scss";
 
 [data-aos] {
     pointer-events: auto;
@@ -13,6 +13,10 @@
     text-decoration: none;
     padding: 0;
     box-sizing: border-box;
+    
+    &::selection {
+        background: crimson;
+    }
 
     .max-width {
         margin: auto;

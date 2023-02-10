@@ -1,0 +1,28 @@
+
+%header {
+    padding: 10% 0;
+    
+    color: white;
+
+    .title {
+        margin-bottom: 60px;
+        text-align: center;
+
+        font: {
+            weight: 500;
+            size: 40px;
+        }
+
+        p {
+            font: {
+                weight: 300;
+                size: 25px;
+            }
+
+            span {
+                color: crimson;
+            }
+        }
+
+    } 
+} 

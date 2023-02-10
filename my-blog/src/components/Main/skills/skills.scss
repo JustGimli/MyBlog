@@ -1,36 +1,14 @@
 @use "./s-item/style.scss";
+@use "../temlate.scss";
 
 .Skills {
-    height: 1000px;
-    color: white;
-    .title {
-        margin-bottom: 60px;
-        
-        text-align: center;
-
-        font: {
-            weight: 500;
-            size: 40px;
-        }
-
-        p {
-            font: {
-                weight: 300;
-                size: 25px;
-            }
-
-            span {
-                color: crimson;
-            }
-        }
-
-    } 
+    background: #242424;
+    @extend %header;
 }
 
 .skills-list {
     display: flex;
     flex-wrap: wrap;
-    // flex-direction: column;
     justify-content: space-around;
     align-items: flex-start;
 } 

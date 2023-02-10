@@ -1,0 +1,23 @@
+@use "./contrItem/style.scss";
+@use "../temlate.scss";
+
+.Contr {
+    @extend %header;
+
+    .Contr-List {
+        display: flex;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+}
+
+.Footer {
+    color: white;
+    font-family: 'Poppins', sans-serif;
+    text-align: center;
+    padding: 20px 23px;
+    span a {
+        text-decoration: none;
+        color: crimson;
+    }
+}

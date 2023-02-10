@@ -1,27 +1,8 @@
 @use "./f-item/style.scss";
+@use "../temlate.scss";
 
 .Features {
-    height: 1000px;
-
-    .title {
-        color: white;
-        text-align: center;
-        margin-bottom: 60px;
-        
-        font: {
-            size: 40px;
-            weight: 500;
-        }
-        
-        p span{
-            font: {
-                size: 22px;
-                weight: 400;
-            }
-            color: crimson;
-        }
-    }
-    
+    @extend %header;
 }
 
 

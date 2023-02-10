@@ -1,0 +1,67 @@
+.Contr-Card {
+    user-select: none;
+
+    border-radius: 6px;
+    padding: 35px 105px;
+    background: #222;
+
+
+    .Contr-Box {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .Img {
+        object-fit: cover;
+        height: 150px;
+        width: 150px;
+        border-radius: 50%;
+        border: 5px solid crimson;
+    }
+
+    .Contr-Name {
+        margin: 10px 0 7px 0;
+        font: {
+            size: 25px;
+            weight: 500;
+
+        }
+    }
+    .Contr-Stripe {
+        border: none;
+        border-radius: 10px;
+        padding: 5px 10px;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    .Developer {
+        background: orange;
+    }
+
+    .Founder {
+        background: crimson;
+    }
+    
+    a {
+        color: white;
+    }
+
+    &:hover {
+        
+        background: crimson;
+        
+        .Contr-Box{
+            transform: scale(1.05);
+        }
+
+        .Img {
+            border-color: white;
+            transition: all  0.6s ease;
+        }
+
+        transition: all  0.6s ease;
+    }
+}
