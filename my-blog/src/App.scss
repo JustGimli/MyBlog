@@ -1,7 +1,8 @@
-@use "./components/Main/navbar/navbar.scss";
+@use "./components/navbar/navbar.scss";
 @use "./components/Main/Features/Features.scss";
 @use "./components/Main/skills/skills.scss";
 @use "./components/Main/Contributors/cont.scss";
+@use "./components/Posts/router.scss";
 
 [data-aos] {
     pointer-events: auto;

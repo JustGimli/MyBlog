@@ -1,6 +1,6 @@
 import React from "react";
 
-import Navbar from './components/Main/navbar';
+import Navbar from './components/navbar';
 import Featured from './components/Main/Features';
 import Skills from './components/Main/skills/skills';
 import Contributors from "./components/Main/Contributors/contr";

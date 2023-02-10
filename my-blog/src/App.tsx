@@ -6,8 +6,10 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import MainPage from './routing';
 import ErrorPage from './components/error-page';
+import Posts from './components/Posts/router';
 
 import './App.scss'
+
 
 
 
@@ -25,7 +27,7 @@ function App() {
         <BrowserRouter> 
             <Routes> 
                 <Route path='/' errorElement={<ErrorPage/>} element={<MainPage />}></Route> 
-                <Route path='/posts' errorElement={<ErrorPage/>}></Route>
+                <Route path='/posts' errorElement={<ErrorPage/>} element={<Posts/>} ></Route>
             </Routes> 
         </BrowserRouter> 
 
