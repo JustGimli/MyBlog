@@ -10,4 +10,4 @@ export default function Navbar(props:any) {
             </div>
         </section>
     )
-}
+} 

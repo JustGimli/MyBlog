@@ -10,7 +10,7 @@ class Header extends React.Component{
         super(props)
         this.state = {
             onTop: true
-        }
+        } 
 
     }
 
@@ -26,7 +26,7 @@ class Header extends React.Component{
                         <a href="https://github.com/JustGimli">Just<span className="Header-Span">Gimli</span></a>
                     </div>
                     <ul>{this.listItem}
-                        <Link to="/posts"><li key={"Posts"}>Posts</li></Link>
+                        <li key={"Posts"}><Link to="/posts">Posts </Link></li>
                     </ul>
                 </div>
                 <Outlet/>
