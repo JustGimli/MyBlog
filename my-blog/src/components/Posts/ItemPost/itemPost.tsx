@@ -13,12 +13,11 @@ export default function Article(props:any ) {
     const params = useParams()
     const postItem = ex.Posts.find((obj) => obj.id===params.id)
     return (
-
         <div className="max-width">
             <div className="Article-Item">
                 <h2 className="Article-Title">{postItem?.title}</h2>
                 <img src={postItem?.urlImg} alt={postItem?.title} className="Article-Img" />
-                
+                <div className="Article-Text"> {postItem?.text}</div>
             </div>
         </div>
     )

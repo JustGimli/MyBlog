@@ -1,0 +1,23 @@
+.ScrollUp {
+    background: crimson;
+    position: fixed;
+    width: 42px;
+    height: 45px;
+    right: 30px;
+    bottom: 10px;
+    text-align: center;
+    line-height: 45px;
+    z-index: 999;
+    border-radius: 6px;
+    color: #fff;
+}
+
+[data-aos=scrollUp] {
+    pointer-events: none;
+    opacity: 0;
+    &.aos-animate {
+        opacity: 1;
+        bottom: 30px;
+        cursor: pointer;
+    }
+}

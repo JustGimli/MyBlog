@@ -1,7 +1,3 @@
-* {
-    background: #222;
-}
-
 .Article-Item {
     margin: 10% 0;
     display: flex;
@@ -13,9 +9,15 @@
     .Article-Img {
         object-fit: cover;
         width: 80%;
+        border: 5px solid crimson;
+        border-radius: 6px;
     }
 
     .Article-Title {
-        margin: 35px ;
+        margin: 35px;
+    }
+
+    .Article-Text {
+            margin-top: 35px;
     }
 }
