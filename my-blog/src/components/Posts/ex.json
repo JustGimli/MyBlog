@@ -1,24 +1,28 @@
 {
     "Posts": [
         {
+            "id": "1",
             "title": "Пишем голосового помощника 1ч",
             "views": 13,
             "urlImg": "https://ai-russia.ru/assets/og_image.jpg",
             "text": "Всем привет в этом туториале я расскажу как написать голосового помощника на Python 3.6+. Для этого нам понадобятся такие модули как pyAudio, dddddddddddddddddddddddddddd ddddddddddddd dddddd"
         },
         {
+            "id": "2",
             "title": "Пишем голосового помощника 2ч",
             "views": 13,
             "urlImg": "https://ai-russia.ru/assets/og_image.jpg",
             "text": "Всем привет в этом туториале я расскажу как написать голосового помощника на Python 3.6+. Для этого нам понадобятся такие модули как pyAudio, dddddddddddddddddddddddddddd ddddddddddddd dddddd"
         },
         {
+            "id": "3",
             "title": "Пишем голосового помощника 3ч",
             "views": 13,
             "urlImg": "https://media.springernature.com/lw630/nature-cms/uploads/collections/AI_HERO-58306268c6f4b659459f5b7b2dd3e8a5.jpg",
             "text": "Всем привет в этом туториале я расскажу как написать голосового помощника на Python 3.6+. Для этого нам понадобятся такие модули как pyAudio, dddddddddddddddddddddddddddd ddddddddddddd dddddd"
         },
         {
+            "id": "4",
             "title": "Пишем голосового помощника 4ч",
             "views": 13,
             "urlImg": "https://static.vecteezy.com/packs/media/vectors/term-bg-1-3d6355ab.jpg",

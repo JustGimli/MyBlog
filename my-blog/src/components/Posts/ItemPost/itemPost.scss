@@ -1,0 +1,21 @@
+* {
+    background: #222;
+}
+
+.Article-Item {
+    margin: 10% 0;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+
+    .Article-Img {
+        object-fit: cover;
+        width: 80%;
+    }
+
+    .Article-Title {
+        margin: 35px ;
+    }
+}

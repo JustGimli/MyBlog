@@ -1,4 +1,5 @@
 @use "./PostList/LIst.scss";
+@use "./ItemPost/itemPost.scss";
 
 .Background {
     height: 110%;
@@ -11,6 +12,7 @@
         
         @media (max-width: 1000px) {
             padding: 0 30px;    
+            
         }
     }
 }

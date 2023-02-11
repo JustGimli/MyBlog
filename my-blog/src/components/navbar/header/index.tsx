@@ -15,7 +15,7 @@ class Header extends React.Component{
     }
 
     mainMenu = ["Home", "Features", "Skills", "Contributors"]
-    listItem = this.mainMenu.map((str) => <li key={str}><a href={`#${str}`.toLowerCase()}>{str}</a></li>)
+    listItem = this.mainMenu.map((str) => <li key={str}><a href={`/#${str}`.toLowerCase()}>{str}</a></li>)
 
     render(): React.ReactNode {
         return(
