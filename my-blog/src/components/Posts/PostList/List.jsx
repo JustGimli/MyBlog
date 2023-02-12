@@ -3,23 +3,50 @@ import axios from "axios";
 
 import Item from "./PostItem";
 
-import ex from "../ex.json";
 
 export default function PostList(props) {
+    const localPath = "http://127.0.0.1:8000/posts/"
+
     const [posts, setPosts] =useState([])
-    const [currentPage, setCurrentPage] = useState(1)
+    const [href, setHref] = useState(localPath)
     const [fetching, setFetching] = useState(true)
+    const [currentPost, setCurrentPost] = useState(1)
+    const [totalCount, setTotalCount] = useState(2)
 
-
+    useEffect ( () => {
+        document.addEventListener('scroll', scrollHandler)
+        
+        return function () {
+            document.removeEventListener('scroll', scrollHandler)
+        }
+    }, [])
+    
     useEffect( () => {
         if(fetching) {
-            axios.get(`http://127.0.0.1:8000/posts/`)
+            axios.get(`${href}`)
                 .then(responce => {
-                    setPosts(responce.data.results)
+                    console.log(responce)
+                    if(localPath === href) {
+                        
+                        setTotalCount(responce.data.results[0].id)
+                        console.log(totalCount)
+                    }
+                    let nextPage = responce.data.next
+                    setCurrentPost(prev => prev + 1)
+                    setHref(nextPage)
+                    setPosts([...posts, ...responce.data.results])
+                    
                 })
-            .finally(() => setFetching(false))
+                .finally(() => setFetching(false))
         }
-    }, [fetching])
+    }, [fetching])    
+
+    const scrollHandler = (e) => {
+        if ((e.target.documentElement.scrollHeight - (e.target.documentElement.scrollTop + window.innerHeight) < 100)  && currentPost < totalCount) {
+            setFetching(true)   
+        }
+    }
+
     return (
         <div className="PostList"> 
             {posts.map(obj => <Item  key={obj.id} urlImg={obj.photo} title={obj.title} views={obj.views} text={obj.text} />)} 

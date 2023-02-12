@@ -24,7 +24,6 @@ class ListPostsView(generics.ListAPIView):
     pagination_class = CursorSetPagination
 
 
-
 class PostView(APIView):
 
     def _get_object(self,pk):

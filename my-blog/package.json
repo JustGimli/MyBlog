@@ -47,6 +47,7 @@
     ]
   },
   "devDependencies": {
-    "@types/aos": "^3.0.4"
+    "@types/aos": "^3.0.4",
+    "eslint-plugin-react-hooks": "^4.6.0"
   }
 }
