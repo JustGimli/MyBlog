@@ -10,8 +10,8 @@ export default function PostList(props: any) {
 
     return (
         <div className="PostList"> 
-            {Items}
+            {Items} 
         </div>
 
-    )
+    ) 
 }

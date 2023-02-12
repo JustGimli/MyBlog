@@ -15,5 +15,5 @@ export default function Posts(props: any) {
                 </div>
             </div>
         </>
-    )
+    ) 
 }
