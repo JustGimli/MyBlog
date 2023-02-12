@@ -17,5 +17,5 @@ export default function Item({ title, views, urlImg, text }: IProp) {
             <img src={urlImg} alt={title} className="Post-Img"></img> 
             <div className="Views"> <AiOutlineEye/>{views}</div>
         </div> 
-    )
+    ) 
 }
