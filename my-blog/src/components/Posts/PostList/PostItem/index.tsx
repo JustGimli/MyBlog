@@ -16,8 +16,7 @@ export default function Item({ title, views, urlImg, text, id }: IProp) {
 
 
     const clickHandler = (e:any) => {
-        console.log(e.target.innerHTML)
-        axios.get(`http://127.0.0.1:8000/posts/${title}/update-views`)
+        axios.patch(`http://127.0.0.1:8000/posts/${id}/update-views`, {count: views+1})
     }
 
     return( 

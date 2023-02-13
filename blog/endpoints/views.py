@@ -37,3 +37,20 @@ class PostView(APIView):
             post = self._get_object(pk) 
             srPost = PostSerializer(post)
             return Response(srPost.data)
+
+
+class UpdateViews(APIView):
+    
+    def set_views(self, id, views):
+        try: 
+            post = Post.objects.get(id=id)
+            post.views = views
+            post.save()
+        except Post.DoesNotExist:
+            raise Http404
+
+
+    def patch(self, request, id, format=None):
+        self.set_views(id=id, views=request.data.get("count"))
+
+        return Response(status=status.HTTP_204_NO_CONTENT)
