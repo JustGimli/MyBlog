@@ -1,12 +1,21 @@
-import React from "react";
+import React, {  useState, useEffect } from "react";
 
-import list from "./ex.json";
+
 import ContrItem from "./contrItem";
+import axios from "axios";
 
 export default function Contributors(props:any) {
 
-    const Contr = list.Contr.map((obj) =>  <ContrItem  key={obj.name} urlGit={obj.href_git} urlPhoto={obj.href_photo} name={obj.name} alt={obj.alt} />)
+    const [list, setList] = useState([])
 
+    useEffect(()=> {
+        axios.get("http://127.0.0.1:8000/contributors/")
+        .then((responce) => {
+            setList(responce.data)
+        })
+    }, [])
+    const Contr = list.map((obj:any) =>  <ContrItem  key={obj.name} urlGit={obj.href_git} urlPhoto={`http://127.0.0.1:8000/${obj.photo}`} name={obj.name} alt={obj.alt} />)
+    
     return (
         <>
             <section className="Contr" id="contributors">

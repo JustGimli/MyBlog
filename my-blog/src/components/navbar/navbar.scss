@@ -1,14 +1,11 @@
 @use "./header/style.scss";
 
-
 .navbar {
     position: fixed;
     width: 100%;
     background: black;
     z-index: 100;
 }
-
-
 
 /* animation */
 [data-aos="navbar"] {

@@ -13,8 +13,7 @@ interface IProp {
 }
 
 export default function Item({ title, views, urlImg, text, id }: IProp) {
-
-
+    
     const clickHandler = (e:any) => {
         axios.patch(`http://127.0.0.1:8000/posts/${id}/update-views`, {count: views+1})
     }

@@ -9,7 +9,6 @@ interface IProp {
 
 export default function ContrItem({ name, urlGit, urlPhoto, alt="img" }: IProp) {
 
-
     return(
         <div className="Contr-Card" data-aos="zoom-in">
             <div className="Contr-Box">

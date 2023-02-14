@@ -1,19 +1,9 @@
-@use "./PostList/LIst.scss";
-@use "./ItemPost/itemPost.scss";
+@use "./PostList/List.scss";
+@use "./OnePost/itemPost.scss";
 
 .Background {
     height: 110%;
     background: #121212;
     padding-bottom: 10%;
-    .max-width {
-        margin: auto;
-        max-width: 1300px;
-        padding: 0px 80px;
-        
-        @media (max-width: 1000px) {
-            padding: 0 30px;    
-            
-        } 
-    }
 }
 

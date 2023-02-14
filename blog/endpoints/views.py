@@ -7,9 +7,9 @@ from rest_framework.views import APIView
 from rest_framework.pagination import CursorPagination
 from rest_framework import generics
 
-from .models import Post
+from .models import Post, Contributor
 
-from .serializers import PostSerializer
+from .serializers import PostSerializer, ContributorsSerializer
 
 
 class CursorSetPagination(CursorPagination):
@@ -39,7 +39,7 @@ class PostView(APIView):
             return Response(srPost.data)
 
 
-class UpdateViews(APIView):
+class UpdateCountViews(APIView):
     
     def set_views(self, id, views):
         try: 
@@ -54,3 +54,18 @@ class UpdateViews(APIView):
         self.set_views(id=id, views=request.data.get("count"))
 
         return Response(status=status.HTTP_204_NO_CONTENT)
+    
+
+class ContribotorViews(APIView):
+
+    def _getContr(self):
+        try:
+            return Contributor.objects.all()
+        except Contributor.DoesNotExist:
+            raise Http404
+
+    def get(self, request, format=None):
+        contr = self._getContr()
+        contrSer = ContributorsSerializer(contr, many=True)
+        
+        return Response(contrSer.data, status=status.HTTP_200_OK)

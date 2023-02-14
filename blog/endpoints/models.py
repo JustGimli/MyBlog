@@ -15,3 +15,10 @@ class Post(models.Model):
     
     class Meta:
         verbose_name = 'post'
+
+
+class Contributor(models.Model):
+    name = models.CharField(max_length=256, blank=False)
+    href_git = models.CharField(max_length=256)
+    photo = models.FileField(upload_to="contributors/%Y")
+    alt = models.CharField(max_length=50)

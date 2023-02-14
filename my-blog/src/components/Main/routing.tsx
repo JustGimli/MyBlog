@@ -1,11 +1,11 @@
 import React from "react";
 
-import Navbar from './components/navbar';
-import Featured from './components/Main/Features';
-import Skills from './components/Main/skills/skills';
-import Contributors from "./components/Main/Contributors/contr";
-import ScrollUp from "./components/scrollUp"
-import Home from "./components/Main/home";
+import Navbar from '../navbar';
+import Featured from './Features';
+import Skills from './skills/skills';
+import Contributors from "./Contributors/contr";
+import ScrollUp from "../scrollUp"
+import Home from "./home";
 
 export default function MainPage(props:any) {
     return (

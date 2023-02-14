@@ -7,15 +7,15 @@ import Article from "./post";
 
 
 export default function SetArticle(props) {
-    // fetch from a endpoint from django
+
     
     const params = useParams()
     const [postItem, setPost] = useState(null)
-    // const postItem = ex.Posts.find((obj) => obj.id===params.id)
+
     useEffect(() => {
-    axios.get(`http://127.0.0.1:8000/posts/${params.id}/`)
-    .then(responce => {
-        setPost(responce.data)
+        axios.get(`http://127.0.0.1:8000/posts/${params.id}/`)
+        .then(responce => {
+            setPost(responce.data)
     })
     }, [params.id])
     
