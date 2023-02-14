@@ -31,7 +31,7 @@ export default function PostList(props) {
                         setPosts([...posts, ...responce.data.results])
                         
                     })
-                    .finally(() => setFetching(false))
+                    .finally(() => setFetching(false)) 
             }
         }
     }, [fetching])    
@@ -46,7 +46,7 @@ export default function PostList(props) {
 
     return (
         <div className="PostList"> 
-            {posts.map(obj => <Item  key={obj.id} urlImg={obj.photo} title={obj.title} views={obj.views} text={obj.text}  id={obj.id}/>)} 
+            {posts.map(obj => <Item  key={obj.id} urlImg={obj.photo} title={obj.title} views={obj.views} text={obj.text}  id={obj.id} date={obj.date} />)} 
         </div>  
 
     ) 

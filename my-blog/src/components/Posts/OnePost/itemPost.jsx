@@ -28,6 +28,6 @@ export default function SetArticle(props) {
     )
 
     return (
-        <Article title={postItem.title} text={postItem.text} photo={postItem.photo}/>
+        <Article title={postItem.title} text={postItem.text} photo={postItem.photo} date={postItem.date} />
     )
 }

@@ -20,6 +20,15 @@
     .Article-Text {
             margin-top: 35px;
     }
+
+    .Article-Date {
+        width: 100%;
+        color: white;
+        padding-top: 20px;
+        display: flex;
+        align-items: center;
+        justify-content: start;
+    }
 }
 
 .notFound {

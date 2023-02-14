@@ -34,13 +34,18 @@
         opacity: 0.9;
         max-height: 600px;
     }
-
+    
     .Views {
         color: white;
         padding-top: 10px;
         display: flex;
         justify-content: end;
         align-items: center;
+    }
+
+    .Date {
+        @extend .Views;
+        justify-content: flex-start;
     }
 
     &:hover {

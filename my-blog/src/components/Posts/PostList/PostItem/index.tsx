@@ -10,19 +10,21 @@ interface IProp {
     views: number,
     urlImg: string,
     text: string,
+    date: string
 }
 
-export default function Item({ title, views, urlImg, text, id }: IProp) {
+export default function Item({ title, views, urlImg, text, id, date }: IProp) {
     
     const clickHandler = (e:any) => {
         axios.patch(`http://127.0.0.1:8000/posts/${id}/update-views`, {count: views+1})
     }
 
     return( 
-        <div className="Post-Item">
+        <div className="Post-Item"> 
             <Link to={`/posts/${id}`}><span className="Title" onClick={clickHandler}>{title}</span></Link>
             <p className="Description">{text}</p>
-            <img src={urlImg} alt={title} className="Post-Img"></img> 
+            <img src={urlImg} alt={title} className="Post-Img"></img>
+            <div className="Date">{date}</div> 
             <div className="Views"> <AiOutlineEye/>{views}</div>
         </div> 
     ) 
