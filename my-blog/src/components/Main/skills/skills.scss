@@ -12,8 +12,10 @@
     justify-content: space-around;
     align-items: flex-start;
 
+
     @media screen and (max-width:600px) {
         flex-direction: column;
+        overflow-y: hidden;
         .Card-skills {
             width: 100%;
         }

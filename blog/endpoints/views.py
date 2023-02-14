@@ -12,7 +12,7 @@ from .models import Post, Contributor, Features, Skill, Character
 from .serializers import PostSerializer, ContributorsSerializer, FeaturesList, SkillSerializer, CharacterSerirializer
 
 class CursorSetPagination(CursorPagination):
-    page_size = 1
+    page_size = 2
     page_size_query_param = 'page_size'
     ordering ='-id'
 

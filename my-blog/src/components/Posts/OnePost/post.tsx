@@ -15,6 +15,6 @@ export default function Article({title, text, photo}:IProp) {
                 <img src={`http://127.0.0.1:8000/${photo}`} alt={title} className="Article-Img" />
                 <div className="Article-Text"> {text}</div>
             </div>
-        </div>
+        </div> 
     )
 }

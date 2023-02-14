@@ -19,7 +19,7 @@ export default function SetArticle(props) {
     })
     }, [params.id])
     
-    if(!postItem) return (
+    if(!postItem) return ( 
         <div className="max-width">
             <div className="notFound">
                 <img src="https://i.pinimg.com/564x/13/5c/4e/135c4e70743ec6eebaf2ea6c10135e4c.jpg" alt="notFound" />
