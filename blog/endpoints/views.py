@@ -7,9 +7,9 @@ from rest_framework.views import APIView
 from rest_framework.pagination import CursorPagination
 from rest_framework import generics
 
-from .models import Post, Contributor
+from .models import Post, Contributor, Features
 
-from .serializers import PostSerializer, ContributorsSerializer
+from .serializers import PostSerializer, ContributorsSerializer, FeaturesList
 
 
 class CursorSetPagination(CursorPagination):
@@ -69,3 +69,19 @@ class ContribotorViews(APIView):
         contrSer = ContributorsSerializer(contr, many=True)
         
         return Response(contrSer.data, status=status.HTTP_200_OK)
+
+class FeaturesViews(APIView):
+
+    def _getContr(self):
+        try:
+            return Features.objects.all()
+        except Contributor.DoesNotExist:
+            raise Http404
+
+    def get(self, request, format=None):
+        contr = self._getContr()
+        contrSer = FeaturesList(contr, many=True)
+        
+        return Response(contrSer.data, status=status.HTTP_200_OK)
+
+

@@ -1,7 +1,6 @@
-from rest_framework import serializers, viewsets
-from rest_framework.parsers import JSONParser
+from rest_framework import serializers
 
-from .models import Post, Contributor
+from .models import Post, Contributor, Features
 
 class PostSerializer(serializers.ModelSerializer):
     
@@ -14,3 +13,9 @@ class ContributorsSerializer(serializers.ModelSerializer):
     class Meta:
         model = Contributor
         fields = "__all__"
+
+class FeaturesList(serializers.ModelSerializer):
+
+    class Meta:
+        model = Features
+        fields = '__all__'

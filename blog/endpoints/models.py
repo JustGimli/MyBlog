@@ -22,3 +22,9 @@ class Contributor(models.Model):
     href_git = models.CharField(max_length=256)
     photo = models.FileField(upload_to="contributors/%Y")
     alt = models.CharField(max_length=50)
+
+class Features(models.Model):
+    title = models.CharField(max_length=256, unique=True)
+    description = models.CharField(max_length=500)
+    aos = models.CharField(max_length=25)
+    
