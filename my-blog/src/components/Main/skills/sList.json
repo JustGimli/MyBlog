@@ -1,51 +1,51 @@
 { 
     "Instuments": [  
         {
-            "title": "Html",
+            "title": "",
             "rate": 4
         },
         {
-            "title": "CSS",
+            "title": "",
             "rate": 4
         },
         {
-            "title": "Python",
+            "title": "",
             "rate": 3
         },
         {
-            "title": "Git",
+            "title": "",
             "rate": 3
         },
         {
-            "title": "VSCode",
+            "title": "",
             "rate": 3
         },
         {
-            "title": "Django",
+            "title": "",
             "rate": 2
         },
         {
-            "title": "React",
+            "title": "",
             "rate": 2
         },
         {
-            "title": "Bash",
+            "title": "",
             "rate": 2
         },
         {
-            "title": "TypeScript/ES6",
+            "title": "/ES6",
             "rate": 2
         },
         {
-            "title": "C++",
+            "title": "",
             "rate": 2
         },
         {
-            "title": "Docker",
+            "title": "",
             "rate": 1
         },
         {
-            "title": "PostreSQL",
+            "title": "",
             "rate": 1
         }
     ]

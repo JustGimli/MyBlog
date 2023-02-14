@@ -7,10 +7,9 @@ from rest_framework.views import APIView
 from rest_framework.pagination import CursorPagination
 from rest_framework import generics
 
-from .models import Post, Contributor, Features
+from .models import Post, Contributor, Features, Skill, Character
 
-from .serializers import PostSerializer, ContributorsSerializer, FeaturesList
-
+from .serializers import PostSerializer, ContributorsSerializer, FeaturesList, SkillSerializer, CharacterSerirializer
 
 class CursorSetPagination(CursorPagination):
     page_size = 1
@@ -85,3 +84,29 @@ class FeaturesViews(APIView):
         return Response(contrSer.data, status=status.HTTP_200_OK)
 
 
+class SkillViews(APIView):
+    def _getContr(self):
+        try:
+            return Skill.objects.all()
+        except Contributor.DoesNotExist:
+            raise Http404
+
+    def get(self, request, format=None):
+        contr = self._getContr()
+        contrSer = SkillSerializer(contr, many=True)
+        
+        return Response(contrSer.data, status=status.HTTP_200_OK)
+    
+
+class CharacterViews(APIView):
+    def _getContr(self):
+        try:
+            return Character.objects.all()
+        except Contributor.DoesNotExist:
+            raise Http404
+
+    def get(self, request, format=None):
+        contr = self._getContr()
+        contrSer = CharacterSerirializer(contr, many=True)
+        
+        return Response(contrSer.data, status=status.HTTP_200_OK)

@@ -6,7 +6,7 @@ import axios from "axios";
 
 export default function Contributors(props:any) {
 
-    const [list, setList] = useState([])
+    const [list, setList] = useState<Array<object>>([])
 
     useEffect(()=> {
         axios.get("http://127.0.0.1:8000/contributors/")
@@ -14,6 +14,7 @@ export default function Contributors(props:any) {
             setList(responce.data)
         })
     }, [])
+
     const Contr = list.map((obj:any) =>  <ContrItem  key={obj.name} urlGit={obj.href_git} urlPhoto={`http://127.0.0.1:8000/${obj.photo}`} name={obj.name} alt={obj.alt} />)
     
     return (

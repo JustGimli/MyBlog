@@ -11,11 +11,10 @@ export default function Featured(props: any) {
     useEffect(() => {
         axios.get("http://127.0.0.1:8000/features/")
         .then((responce) => {
-            console.log(responce.data)
             setList(responce.data)
         })
     }, [])
-
+    
     const listItem = list.map((obj:any) => <FItem key={obj.title} title={obj.title} description={obj.description} aos={obj.aos} />)
 
     return(

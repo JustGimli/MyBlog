@@ -28,3 +28,9 @@ class Features(models.Model):
     description = models.CharField(max_length=500)
     aos = models.CharField(max_length=25)
     
+class Skill(models.Model):
+    title = models.CharField(max_length=25, unique=True)
+    rate = models.PositiveSmallIntegerField()
+
+class Character(models.Model):
+    text = models.CharField(max_length=50)

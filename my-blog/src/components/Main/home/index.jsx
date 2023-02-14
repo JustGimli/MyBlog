@@ -1,15 +1,23 @@
 import React, {useEffect, useState} from "react";
 
-
+import axios from "axios";
 
 export default function Home(props){
-        const data = ["generate", "thin", "easy to use", "tihon on place", "where is my mind"] // fetch from  server
+        const [data, setData] = useState([])
+        const [num, setNum] = useState(0)
+        
+        useEffect(() => {
+            axios.get("http://127.0.0.1:8000/characters/")
+            .then((responce) => {
+                setData(responce.data.map(obj => obj.text))
+                setNum(responce.data.length)
+            })
+            
+        }, [])
 
         const [Article, setArticle] = useState([])
-        const [item, setItem] = useState(['g','e', 'r', 't'])
-        const [num, setNum] = useState(() => {
-            return data.length
-        })
+        const [item, setItem] = useState(['d', 'e', 'v', 'e', 'l', 'o', 'p', 'e', 'r'])
+        const [index, setIndex] = useState(0)
         const [fetch, setFetch] = useState(true)
 
 
@@ -33,8 +41,15 @@ export default function Home(props){
                 }
                 }else{
                     setFetch(true)
-                    const index = Math.floor(Math.random() * num)
+                    
                     setItem(data[index].split(""))
+                    let indexTemp = Math.floor(Math.random() * num)
+                    if (index === indexTemp) {
+                        while (indexTemp === index) {
+                            indexTemp = Math.floor(Math.random() * num)
+                        }
+                    }
+                    setIndex(indexTemp)
                     setArticle("")
                     
                 }
