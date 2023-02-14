@@ -23,6 +23,8 @@
         font-weight: 500;
         color: crimson;
     }
+
+
 }
 
 .Home {
@@ -32,13 +34,22 @@
     background-attachment: fixed;
     height: 100vh;
     min-height: 500px;
+
+    @media screen and (max-width:600px) {
+        padding: 20px;
+
+        .Home-width {
+            margin-left: 0%;
+            margin-top: 100%;
+        }
+    }
 }
 
 .Cursor {
     color: crimson;
     opacity: 1;
     animation: ease 0.2s infinite alternate cursorjsblink;
-}
+} 
 
 @keyframes cursorjsblink {
     from {

@@ -8,6 +8,6 @@ export default function Navbar(props:any) {
             <div className="navbar" data-aos="navbar"  data-aos-anchor-placement="top-top" data-aos-offset="300">
                 <Header/>       
             </div>
-        </section>
+        </section> 
     )
 } 

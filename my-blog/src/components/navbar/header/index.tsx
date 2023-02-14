@@ -1,10 +1,6 @@
 import React from "react";
 import { Outlet, Link } from "react-router-dom";
 
-interface IProp{
-
-}
-
 class Header extends React.Component{
     constructor(props: any){
         super(props)
@@ -20,12 +16,13 @@ class Header extends React.Component{
     render(): React.ReactNode {
         return(
             
-            <div className="max-width">
+            <div className="max-width"> 
                 <div className="Header-Menu">
                     <div className="logo">
                         <a href="https://github.com/JustGimli">Just<span className="Header-Span">Gimli</span></a>
                     </div>
-                    <ul>{this.listItem}
+                    <ul>
+                        {window.innerWidth >= 600 ?this.listItem:this.listItem[0]}
                         <li key={"Posts"}><Link to="/posts">Posts </Link></li>
                     </ul>
                 </div>

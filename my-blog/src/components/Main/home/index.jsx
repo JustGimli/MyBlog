@@ -18,7 +18,7 @@ export default function Home(props){
         const [Article, setArticle] = useState([])
         const [item, setItem] = useState(['d', 'e', 'v', 'e', 'l', 'o', 'p', 'e', 'r'])
         const [index, setIndex] = useState(0)
-        const [fetch, setFetch] = useState(true)
+        const [fetch, setFetch] = useState(true) 
 
 
         useEffect( () => {
@@ -67,7 +67,7 @@ export default function Home(props){
                     <div className="text-2">JustGimli</div>
                     <div className="text-3">
                         And I am
-                        <span className="changedText">  {Article}</span>
+                        <span className="changedText"> {Article}</span>
                         <span className="Cursor" id="cursor">|</span> 
                     </div>
                     

@@ -17,4 +17,4 @@ export default function FItem({ title, description, aos }:IProp) {
             </div>
         </>
     )
-} 
+}  

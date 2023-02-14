@@ -5,6 +5,10 @@
     padding: 35px 105px;
     background: #222;
 
+    @media screen and (max-width:600px) {
+        margin-top: 10px;
+    }
+
 
     .Contr-Box {
         display: flex;
