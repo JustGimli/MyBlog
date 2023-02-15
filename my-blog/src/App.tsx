@@ -7,6 +7,7 @@ import MainPage from './components/Main/routing';
 import ErrorPage from './components/error-page';
 import Posts from './components/Posts/posts';
 import Post from './components/Posts/OnePost/itemPost';
+import FormItem from './components/admin/form';
 
 import './App.scss'
 
@@ -29,6 +30,7 @@ function App() {
                 <Route path='/' errorElement={<ErrorPage/>} element={<MainPage />}></Route> 
                 <Route path='/posts' errorElement={<ErrorPage/>} element={<Posts/>} ></Route>
                 <Route path='/posts/:id' errorElement={<ErrorPage/>} element={<Post/>} ></Route>
+                <Route path='/admin' errorElement={<ErrorPage/>} element={<FormItem/>}></Route>
             </Routes> 
         </BrowserRouter> 
 
