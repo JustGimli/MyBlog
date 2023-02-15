@@ -1,0 +1,36 @@
+.Styles {
+    width: 100%;
+    height: 100%;
+    padding: 10%;
+    color: #222;
+
+    .Form-div {
+        margin: auto;
+        border-radius: 10px;
+        border: 5px solid crimson;
+        background: crimson;
+        padding: 150px ;
+        width: max-content;
+
+        .Form-Form  {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            flex-direction: column;
+            
+            input {
+                border-radius: 5px;
+            }
+
+            .Form-button {
+                margin-top: 10px;
+                padding: 2px 10px;
+                border: 0px;
+
+                &:hover {
+                    color: crimson;
+                }
+            }
+        }
+    }
+}
