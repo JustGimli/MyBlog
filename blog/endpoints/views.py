@@ -108,5 +108,17 @@ class CharacterViews(APIView):
     def get(self, request, format=None):
         contr = self._getContr()
         contrSer = CharacterSerirializer(contr, many=True)
+        print(list(contrSer.data))
         
-        return Response(contrSer.data, status=status.HTTP_200_OK)
+        return Response({"data": contrSer.data}, status=status.HTTP_200_OK)
+    
+    def post(self, request):
+        print(request.data)
+        newCharacter = CharacterSerirializer(data=request.data)
+
+        if newCharacter.is_valid():
+            newCharacter.save()
+
+            return Response(newCharacter.data, status=status.HTTP_201_CREATED)
+
+        return Response(newCharacter.errors, status=status.HTTP_400_BAD_REQUEST)

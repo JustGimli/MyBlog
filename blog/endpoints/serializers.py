@@ -32,3 +32,6 @@ class CharacterSerirializer(serializers.ModelSerializer):
     class Meta:
         model = Character
         fields = ['text']
+
+
+
