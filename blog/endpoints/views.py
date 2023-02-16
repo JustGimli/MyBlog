@@ -7,10 +7,9 @@ from rest_framework.views import APIView
 from rest_framework.pagination import CursorPagination
 from rest_framework import generics
 
-from .models import Post, Contributor, Features, Skill, Character
+from .models import Post, Contributor, Features, Skill, Admin
 
-from .serializers import PostSerializer, ContributorsSerializer, FeaturesList, SkillSerializer, CharacterSerirializer
-
+from .serializers import PostSerializer, ContributorsSerializer, FeaturesList, SkillSerializer, AdminSerializer
 class CursorSetPagination(CursorPagination):
     page_size = 2
     page_size_query_param = 'page_size'
@@ -96,29 +95,26 @@ class SkillViews(APIView):
         contrSer = SkillSerializer(contr, many=True)
         
         return Response(contrSer.data, status=status.HTTP_200_OK)
-    
 
-class CharacterViews(APIView):
-    def _getContr(self):
+
+class UserViews(APIView): 
+    
+    def check_data(self, login, password):
         try:
-            return Character.objects.all()
-        except Contributor.DoesNotExist:
+            us = Admin.objects.get(login=login)
+            if password == us.password:
+                return True
+            return False
+
+        except Admin.DoesNotExist:
             raise Http404
 
-    def get(self, request, format=None):
-        contr = self._getContr()
-        contrSer = CharacterSerirializer(contr, many=True)
-        print(list(contrSer.data))
-        
-        return Response({"data": contrSer.data}, status=status.HTTP_200_OK)
-    
-    def post(self, request):
-        print(request.data)
-        newCharacter = CharacterSerirializer(data=request.data)
-
-        if newCharacter.is_valid():
-            newCharacter.save()
-
-            return Response(newCharacter.data, status=status.HTTP_201_CREATED)
-
-        return Response(newCharacter.errors, status=status.HTTP_400_BAD_REQUEST)
+    def post(self, request, format=None):
+        userData = AdminSerializer(data=request.data)
+        if userData.is_valid():
+            if self.check_data(login=request.data['login'], password=request.data['password']):
+                return Response(status=status.HTTP_200_OK)
+            else:
+                return Response(status=status.HTTP_404_NOT_FOUND)
+        else:
+            return Response(status=status.HTTP_404_BAD_REQUEST)

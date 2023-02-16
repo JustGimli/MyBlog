@@ -1,6 +1,6 @@
 from rest_framework import serializers
 
-from .models import Post, Contributor, Features, Skill, Character
+from .models import Post, Contributor, Features, Skill, Admin
 
 class PostSerializer(serializers.ModelSerializer):
     
@@ -27,11 +27,10 @@ class SkillSerializer(serializers.ModelSerializer):
         model = Skill
         fields = "__all__"
 
-class CharacterSerirializer(serializers.ModelSerializer):
+
+class AdminSerializer(serializers.Serializer):
 
     class Meta:
-        model = Character
-        fields = ['text']
-
-
+        model = Admin
+        fields = '__all__'
 

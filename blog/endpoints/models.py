@@ -32,5 +32,7 @@ class Skill(models.Model):
     title = models.CharField(max_length=25, unique=True)
     rate = models.PositiveSmallIntegerField()
 
-class Character(models.Model):
-    text = models.CharField(max_length=50)
+
+class Admin(models.Model):
+    login = models.CharField(max_length=50, unique=True, blank=False)
+    password = models.CharField(max_length=50, blank=False)
