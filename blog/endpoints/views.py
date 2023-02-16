@@ -122,3 +122,15 @@ class CharacterViews(APIView):
             return Response(newCharacter.data, status=status.HTTP_201_CREATED)
 
         return Response(newCharacter.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+class MakePost():
+    def post(self, request):
+        newPost = PostSerializer(data=request.data)
+        
+        if newPost.is_valid():
+            newPost.save()
+
+            return Response(newPost.data, status=status.HTTP_201_CREATED)
+
+        return Response(newPost.errors, status=status.HTTP_400_BAD_REQUEST)
+

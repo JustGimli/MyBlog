@@ -7,6 +7,7 @@ import MainPage from './components/Main/routing';
 import ErrorPage from './components/error-page';
 import Posts from './components/Posts/posts';
 import Post from './components/Posts/OnePost/itemPost';
+import CommandField from './components/MakePost/CommandField';
 
 import './AppCss.scss'
 
@@ -29,7 +30,7 @@ function App() {
                 <Route path='/' errorElement={<ErrorPage/>} element={<MainPage />}></Route> 
                 <Route path='/posts' errorElement={<ErrorPage/>} element={<Posts/>} ></Route>
                 <Route path='/posts/:id' errorElement={<ErrorPage/>} element={<Post/>} ></Route>
-                <Route path='/make-post' errorElement={<ErrorPage/>} element={<Post/>} ></Route> // Можно ProtectedRoute
+                <Route path='/make-post' errorElement={<ErrorPage/>} element={<CommandField/>} ></Route> // Можно ProtectedRoute
                  
             </Routes> 
         </BrowserRouter> 
