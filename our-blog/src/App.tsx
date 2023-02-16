@@ -8,6 +8,7 @@ import ErrorPage from './components/error-page';
 import Posts from './components/Posts/posts';
 import Post from './components/Posts/OnePost/itemPost';
 import CommandField from './components/MakePost/CommandField';
+import FormItem from './components/admin/form';
 
 import './AppCss.scss'
 
