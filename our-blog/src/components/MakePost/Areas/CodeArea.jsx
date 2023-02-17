@@ -27,10 +27,7 @@ const CodeArea = () => {
         </SyntaxHighlighter>
             <textarea name="code-area" id="code-area" width="400px" height="200px" 
                       onChange={e => { setCode(e.target.value) } } value={code}>
-               
-                
                 { code }
-            
             </textarea>
 
         <MdControlPoint className="icon" onClick={e => MenuAreas }/>
