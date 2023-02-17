@@ -1,6 +1,8 @@
+from django.contrib.auth.models import User
+
 from rest_framework import serializers
 
-from .models import Post, Contributor, Features, Skill, Admin
+from .models import Post, Contributor, Features, Skill
 
 class PostSerializer(serializers.ModelSerializer):
     
@@ -31,6 +33,6 @@ class SkillSerializer(serializers.ModelSerializer):
 class AdminSerializer(serializers.Serializer):
 
     class Meta:
-        model = Admin
+        model = User
         fields = '__all__'
 

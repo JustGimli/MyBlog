@@ -1,13 +1,16 @@
 from django.http import Http404, HttpResponse
+from django.contrib.auth.models import User
 
 from rest_framework import status
 from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.pagination import CursorPagination
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import BasicAuthentication
 from rest_framework import generics
 
-from .models import Post, Contributor, Features, Skill, Admin
+from .models import Post, Contributor, Features, Skill
 
 from .serializers import PostSerializer, ContributorsSerializer, FeaturesList, SkillSerializer, AdminSerializer
 class CursorSetPagination(CursorPagination):
@@ -101,34 +104,29 @@ class UserViews(APIView):
     
     def check_data(self, login, password):
         try:
-            us = Admin.objects.get(login=login)
+            us = User.objects.get(username=login)
             if password == us.password:
                 return True
             return False
 
-        except Admin.DoesNotExist:
+        except User.DoesNotExist:
             raise Http404
 
-<<<<<<< HEAD
-    def get(self, request, format=None):
-        contr = self._getContr()
-        contrSer = CharacterSerirializer(contr, many=True)
-        print(list(contrSer.data))
-        
-        return Response({"data": contrSer.data}, status=status.HTTP_200_OK)
+    def post(self, request, format=None):
+        userData = AdminSerializer(data=request.data)
+        if userData.is_valid():
+            if self.check_data(login=request.data['login'], password=request.data['password']):
+                return Response(status=status.HTTP_200_OK)
+            else:
+                return Response(status=status.HTTP_404_NOT_FOUND)
+        else:
+            return Response(status=status.HTTP_404_BAD_REQUEST)
     
-    def post(self, request):
-        print(request.data)
-        newCharacter = CharacterSerirializer(data=request.data)
 
-        if newCharacter.is_valid():
-            newCharacter.save()
+class MakePost(APIView):
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
 
-            return Response(newCharacter.data, status=status.HTTP_201_CREATED)
-
-        return Response(newCharacter.errors, status=status.HTTP_400_BAD_REQUEST)
-    
-class MakePost():
     def post(self, request):
         newPost = PostSerializer(data=request.data)
         
@@ -139,14 +137,4 @@ class MakePost():
 
         return Response(newPost.errors, status=status.HTTP_400_BAD_REQUEST)
 
-=======
-    def post(self, request, format=None):
-        userData = AdminSerializer(data=request.data)
-        if userData.is_valid():
-            if self.check_data(login=request.data['login'], password=request.data['password']):
-                return Response(status=status.HTTP_200_OK)
-            else:
-                return Response(status=status.HTTP_404_NOT_FOUND)
-        else:
-            return Response(status=status.HTTP_404_BAD_REQUEST)
->>>>>>> 79cf83b56ca2385f55d99edbd4a139bf96930a77
+ 
