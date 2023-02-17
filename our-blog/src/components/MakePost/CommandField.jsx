@@ -1,54 +1,79 @@
-import axios from 'axios';
-import React, { useState } from 'react'
-import SyntaxHighlighter from 'react-syntax-highlighter';
-import { dracula } from 'react-syntax-highlighter/dist/esm/styles/hljs';
+import React, { useState, useEffect } from 'react'
 
-import CodeArea from './Areas/CodeArea';
+
+import {
+    MdControlPoint,
+    MdOutlineDeleteOutline
+} from "react-icons/md";
+
+// import './CodeArea.scss';
+import PostElements from './PostElements';
+
+
 
 
 const CommandField = () => {
-    const codeString = 'def main():\n print("Hello world")';
+    const [code, setCode] = useState('');
+    const [postElements, setPostElements] = useState([{'type': 'code'}, {'type': 'text'}]); // Хранит последовательность элементов для текущего поста
 
-    // cosnt [image, setImage] = useState('');
-    
-    // function changeFile(e){
-    //     let file = e.target.files[0];
-    //     setImage(file);
-        
-    // }
 
-    // function postFile(){
-    //     let formData = new FormData();
-    //     let file = file;
 
-    //     formData.append('photo', file);
-    //     formData.append('text', 'Офигенная статья');
-    //     formData.append('views', 113);
-    //     formData.append('title', 'Мессенджер');
+   
 
-    //     const response = axios({
-    //         url: '/make-post',
-    //         method: 'POST',
-    //         data: formData
-    //     })
+    function makeDecision(event) {
+        event.preventDefault(); // Чтобы не переходило по ссылке #
 
-    //     console.log(response, response.data);
-    // }
+
+        console.log(event.target.innerText);
+    }
 
     return (
-        <>
-            <CodeArea />
-            {/* <form action="">
-                <input type="file" name="фото" onChange={e => changeFile(e) }/>
-                <button onClick={ postFile } >Отправить</button>
-            </form> */}
-            
-        </>
+        <div className='Out-div'>
 
-        
-    
-    );
+            {/* <SyntaxHighlighter language="python" style={funky}>{code}
+            </SyntaxHighlighter> */}
+            <textarea name="code-area" id="code-area" width="400px" height="200px"
+                onChange={e => { setCode(e.target.value) }} value={code}>
 
+                {code}
+
+            </textarea>
+
+
+
+
+
+
+            <div className="dropdown">
+                <MdControlPoint className="icon" id='addArea' />
+                <div className="dropdown-content">
+                    <a href="#" onClick={makeDecision}>Код</a>
+                    <a href="#" onClick={makeDecision}>Текст</a>
+                    <a href="#" onClick={ makeDecision }>Картинка</a>
+                </div>
+            </div>
+
+            <div className="dropdown">
+                <MdOutlineDeleteOutline className="icon" />
+                <div className="dropdown-content">
+                    <a href="#" onClick={ makeDecision }>Удалить</a>
+                </div>
+            </div>
+
+
+
+
+            <PostElements postElements = { postElements } />
+
+
+
+
+
+
+
+
+        </div>
+    )
 }
 
 export default CommandField

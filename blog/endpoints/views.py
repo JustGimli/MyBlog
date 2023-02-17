@@ -109,37 +109,6 @@ class UserViews(APIView):
         except Admin.DoesNotExist:
             raise Http404
 
-<<<<<<< HEAD
-    def get(self, request, format=None):
-        contr = self._getContr()
-        contrSer = CharacterSerirializer(contr, many=True)
-        print(list(contrSer.data))
-        
-        return Response({"data": contrSer.data}, status=status.HTTP_200_OK)
-    
-    def post(self, request):
-        print(request.data)
-        newCharacter = CharacterSerirializer(data=request.data)
-
-        if newCharacter.is_valid():
-            newCharacter.save()
-
-            return Response(newCharacter.data, status=status.HTTP_201_CREATED)
-
-        return Response(newCharacter.errors, status=status.HTTP_400_BAD_REQUEST)
-    
-class MakePost():
-    def post(self, request):
-        newPost = PostSerializer(data=request.data)
-        
-        if newPost.is_valid():
-            newPost.save()
-
-            return Response(newPost.data, status=status.HTTP_201_CREATED)
-
-        return Response(newPost.errors, status=status.HTTP_400_BAD_REQUEST)
-
-=======
     def post(self, request, format=None):
         userData = AdminSerializer(data=request.data)
         if userData.is_valid():
@@ -149,4 +118,5 @@ class MakePost():
                 return Response(status=status.HTTP_404_NOT_FOUND)
         else:
             return Response(status=status.HTTP_404_BAD_REQUEST)
->>>>>>> 79cf83b56ca2385f55d99edbd4a139bf96930a77
+
+
