@@ -1,0 +1,91 @@
+
+.Out-div{
+    // background: white;
+
+    .icon{
+        background-color: white;
+        color: black;
+        width: 50px;
+        height: 50px;
+        cursor: pointer;
+    }
+
+    .dropbtn {
+        background-color: #04AA6D;
+        color: white;
+        padding: 16px;
+        font-size: 16px;
+        border: none;
+      }
+      
+      .dropdown {
+        position: relative;
+        display: inline-block;
+      }
+      
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        background-color: #f1f1f1;
+        min-width: 160px;
+        box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+        z-index: 1;
+        margin-top: -5px;
+      }
+      
+      .dropdown-content a {
+        color: black;
+        padding: 12px 16px;
+        text-decoration: none;
+        display: block;
+      }
+      
+      .dropdown-content a:hover {background-color: #ddd;}
+      
+      .dropdown:hover .dropdown-content {display: block;}
+      
+      
+      
+      
+      
+      
+
+
+
+
+
+    // .icon{
+    //     color: white;
+    //     width: 50px;
+    //     height: 50px;
+    //     cursor: pointer;
+    // }
+
+    
+    
+    
+    
+    // .areasDiv{
+    //     width: 10%;
+        
+        
+    // }
+
+    // .areaBtn {
+    //     background-color: whitesmoke;
+    //     display: none;
+    //     padding: 5px;
+    //     font-weight: 500;
+    //     cursor: pointer;
+        
+    // }
+
+    // .areaBtn:hover {
+    //     background-color:rgba(245, 245, 245, 0.834);
+    //   } 
+    
+    //   .areasDiv:hover
+    //   .areaBtn{
+    //       display: flex;
+    //   }
+}
