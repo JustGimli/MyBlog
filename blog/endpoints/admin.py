@@ -1,7 +1,4 @@
 from django.contrib import admin
-
-
-
 from .models import Post, Contributor, Features, Skill
 
 admin.site.register(Post)

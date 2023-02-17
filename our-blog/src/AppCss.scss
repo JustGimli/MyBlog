@@ -6,6 +6,7 @@
 @use "./components/scrollUp/style.scss";
 @use "./components/Main/home/home.scss";
 @use "./components/MakePost/routing.scss";
+@use "./components/admin/form/form.scss";
 
 [data-aos] {
     pointer-events: auto;

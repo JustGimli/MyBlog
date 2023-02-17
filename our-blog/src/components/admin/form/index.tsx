@@ -25,8 +25,9 @@ export default function FormItem(props: any) {
             "password": data["password"]
         })
         .then((responce) => {
+            console.log(responce)
             if (responce.data.status) {
-                    
+
             }
         }) 
         .catch((reason: AxiosError<{additionalInfo:string}>) => {
