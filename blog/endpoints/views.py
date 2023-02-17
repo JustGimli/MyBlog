@@ -1,13 +1,16 @@
 from django.http import Http404, HttpResponse
+from django.contrib.auth.models import User
 
 from rest_framework import status
 from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.pagination import CursorPagination
+from rest_framework.permissions import IsAuthenticated
+from rest_framework.authentication import BasicAuthentication
 from rest_framework import generics
 
-from .models import Post, Contributor, Features, Skill, Admin
+from .models import Post, Contributor, Features, Skill
 
 from .serializers import PostSerializer, ContributorsSerializer, FeaturesList, SkillSerializer, AdminSerializer
 class CursorSetPagination(CursorPagination):
@@ -101,12 +104,12 @@ class UserViews(APIView):
     
     def check_data(self, login, password):
         try:
-            us = Admin.objects.get(login=login)
+            us = User.objects.get(username=login)
             if password == us.password:
                 return True
             return False
 
-        except Admin.DoesNotExist:
+        except User.DoesNotExist:
             raise Http404
 
     def post(self, request, format=None):
@@ -118,5 +121,20 @@ class UserViews(APIView):
                 return Response(status=status.HTTP_404_NOT_FOUND)
         else:
             return Response(status=status.HTTP_404_BAD_REQUEST)
+    
 
+class MakePost(APIView):
+    authentication_classes = [BasicAuthentication]
+    permission_classes = [IsAuthenticated]
 
+    def post(self, request):
+        newPost = PostSerializer(data=request.data)
+        
+        if newPost.is_valid():
+            newPost.save()
+
+            return Response(newPost.data, status=status.HTTP_201_CREATED)
+
+        return Response(newPost.errors, status=status.HTTP_400_BAD_REQUEST)
+
+ 

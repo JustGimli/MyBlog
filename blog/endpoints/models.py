@@ -16,7 +16,6 @@ class Post(models.Model):
     class Meta:
         verbose_name = 'post'
 
-
 class Contributor(models.Model):
     name = models.CharField(max_length=256, blank=False)
     href_git = models.CharField(max_length=256)
@@ -32,7 +31,3 @@ class Skill(models.Model):
     title = models.CharField(max_length=25, unique=True)
     rate = models.PositiveSmallIntegerField()
 
-
-class Admin(models.Model):
-    login = models.CharField(max_length=50, unique=True, blank=False)
-    password = models.CharField(max_length=50, blank=False)

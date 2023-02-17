@@ -32,7 +32,8 @@ function App() {
                 <Route path='/' errorElement={<ErrorPage/>} element={<MainPage />}></Route> 
                 <Route path='/posts' errorElement={<ErrorPage/>} element={<Posts/>} ></Route>
                 <Route path='/posts/:id' errorElement={<ErrorPage/>} element={<Post/>} ></Route>
-                <Route path='/make-post' errorElement={<ErrorPage/>} element={<CommandField/>} ></Route> // Можно ProtectedRoute
+                <Route path='/make-post' errorElement={<ErrorPage/>} element={<CommandField/>} ></Route>
+                <Route path='/login' errorElement={<ErrorPage/>} element={<FormItem/>} ></Route> 
                  
             </Routes> 
         </BrowserRouter> 
