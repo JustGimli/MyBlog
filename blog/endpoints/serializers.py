@@ -31,8 +31,7 @@ class SkillSerializer(serializers.ModelSerializer):
 
 
 class AdminSerializer(serializers.Serializer):
-
     class Meta:
         model = User
-        fields = '__all__'
+        fields = ["username", "password"]
 

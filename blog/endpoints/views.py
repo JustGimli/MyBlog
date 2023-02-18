@@ -1,5 +1,6 @@
 from django.http import Http404, HttpResponse
 from django.contrib.auth.models import User
+from django.contrib.auth.hashers import check_password
 
 from rest_framework import status
 from rest_framework.request import Request
@@ -13,6 +14,7 @@ from rest_framework import generics
 from .models import Post, Contributor, Features, Skill
 
 from .serializers import PostSerializer, ContributorsSerializer, FeaturesList, SkillSerializer, AdminSerializer
+
 class CursorSetPagination(CursorPagination):
     page_size = 2
     page_size_query_param = 'page_size'
@@ -105,7 +107,8 @@ class UserViews(APIView):
     def check_data(self, login, password):
         try:
             us = User.objects.get(username=login)
-            if password == us.password:
+
+            if check_password(password, us.password):
                 return True
             return False
 
@@ -119,13 +122,15 @@ class UserViews(APIView):
                 return Response(status=status.HTTP_200_OK)
             else:
                 return Response(status=status.HTTP_404_NOT_FOUND)
+                
         else:
-            return Response(status=status.HTTP_404_BAD_REQUEST)
+            return Response(status=status.HTTP_404_NOT_FOUND)
     
 
 class MakePost(APIView):
     authentication_classes = [BasicAuthentication]
     permission_classes = [IsAuthenticated]
+
 
     def post(self, request):
         newPost = PostSerializer(data=request.data)
