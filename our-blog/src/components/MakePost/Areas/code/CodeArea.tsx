@@ -5,11 +5,12 @@ import { funky } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 
 const CodeArea = () => {
-    const [language, setLanguage] = useState('');
+    const [language, setLanguage] = useState('Язык');
     const [code, setCode] = useState('');
     
 
 function handleClickDeopBox(e: any) {
+    e.preventDefault();
     setLanguage(e.target.id)
 }
 
@@ -18,7 +19,7 @@ function handleClickDeopBox(e: any) {
             <div className='side-Code-Area'>
 
                 <div className="dropdown">
-                    <button className="dropbtn" >Язык</button>
+                    <button className="dropbtn" >{ language }</button>
                     <div className="dropdown-content" onClick={handleClickDeopBox}>
                         <a href="#" id="python">Python</a>
                         <a href="#" id="java">Java</a>

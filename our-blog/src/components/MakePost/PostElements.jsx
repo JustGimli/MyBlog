@@ -2,42 +2,32 @@ import React from 'react'
 import CodeArea from './Areas/code/CodeArea';
 import TextArea from './Areas/text/TextArea';
 import ImageArea from './Areas/image/ImageArea';
+import AddElement from './Buttons/AddElement';
+import DeleteElement from './Buttons/DeleteElement';
 
-const PostElements = ({ postElements }) => {
+const PostElements = ({ postElements, makeDecision }) => {
   console.log(postElements);
   return (
     <div style={ {height: "60px"} }>
       {
-        postElements.map(element => 
-
+        postElements.map((element, idx) => 
+            
             (element.type == 'code') ?
                 <CodeArea />:
                   (element.type == 'text') ?
                     <TextArea />:
                         (element.type == 'image') ?
                           <ImageArea />:
-                              <></>
-
-            ,
+                              <></>,
 
             
-            
-            
-            
-           
-
-
-            // if (element.type == 'code') {
-            //     { console.log('good') }
-            //     <h1 style={ {color: "white"} }>Код</h1>
-            // } else if (element.type == 'text') {
-            //     <h1 style={ {color: "white"} }>Текст</h1>
-            // } else if (element.type == 'image') {
-            //     <h1>Картинка</h1>
-        
             
         )
+
       }
+      <div style={ {height: "200px"} }><AddElement   makeDecision={ makeDecision } /></div>
+      
+
     </div>
   )
 }
