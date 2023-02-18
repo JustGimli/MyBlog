@@ -1,6 +1,6 @@
 import React from 'react'
 
-const ImageArea = () => {
+const ImageArea = ({ idx, changeElementContent }) => {
   return (
     <div>
       Image here

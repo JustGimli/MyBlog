@@ -11,44 +11,66 @@ import DeleteElement from './Buttons/DeleteElement';
 
 
 
+
 const CommandField = () => {
-    const [code, setCode] = useState('');
     const [postElements, setPostElements] = useState([]); // Хранит последовательность элементов для текущего поста
 
 
-    const makeDecision = useCallback((e,newElement) => {
+    const makeDecision = useCallback((e, newElement) => {
         e.preventDefault();
         console.log(newElement);
         setPostElements([...postElements, newElement]);
       }, [postElements]);
+
+    const deleteElement = useCallback((idx) => {
+        setPostElements(
+            postElements.filter((element, index) =>
+              index !== idx
+            )
+          );
+      }, [postElements]);
+
+      const changeElementContent = useCallback((idx, updatedData) => {
+        const updatedArray = postElements.map((element, index) => {
+            if (index !== idx) {
+              
+              return element;
+            } else {
+              // Обновляем содержимое элемента
+              return updatedData;
+            }
+        });
+        
+        setPostElements(updatedArray);
+      }, [postElements]);
+
+
+      function SaveInLocalStorage(){
+        let bufer =  JSON.stringify(postElements);
+        localStorage.setItem('elements', bufer); 
+      }
+
+
+      useEffect(() => {
+        let data = localStorage.getItem('elements'); // Возвращает массив
+        if (data){
+            let elements = JSON.parse(data);
+            if (elements){
+                setPostElements(elements)
+            } 
+        }
+        
+
+        
+      }, [])
    
-
-    // function makeDecision(event) {
-    //     event.preventDefault(); // Чтобы не переходило по ссылке #
-
-
-    //     console.log(event.target.innerText);
-    // }
+      
 
     return (
         <div className='Out-div'>
 
-            {/* <SyntaxHighlighter language="python" style={funky}>{code}
-            </SyntaxHighlighter> */}
-            <textarea name="code-area" id="code-area" width="400px" height="200px"
-                onChange={e => { setCode(e.target.value) }} value={code}>
-
-                {code}
-
-            </textarea>
-
-
-
-
-
-
-            {/* <AddElement   makeDecision={ makeDecision } /> */}
             
+            <button onClick={e =>  SaveInLocalStorage() }>Сохранить в LocalStorage</button>
 
             {/* <div className="dropdown">
                 <MdOutlineDeleteOutline className="icon" />
@@ -56,16 +78,7 @@ const CommandField = () => {
                     <a href="#" onClick={ makeDecision }>Удалить</a>
                 </div>
             </div> */}
-
-
-
-
-            <PostElements postElements = { postElements } makeDecision={ makeDecision }  />
-
-
-
-
-
+            <PostElements postElements = { postElements } makeDecision={ makeDecision } changeElementContent={ changeElementContent } deleteElement={deleteElement}/>
 
 
 

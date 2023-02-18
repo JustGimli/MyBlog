@@ -13,8 +13,8 @@ const AddElement = ({ makeDecision }) => {
       <div className="dropdown">
                 <MdControlPoint className="icon" id='addArea' />
                 <div className="dropdown-content">
-                    <a href="#" onClick={e => makeDecision(e, {"type": "code"})}>Код</a>
-                    <a href="#"  onClick={e => makeDecision(e, {"type": "text"})}>Текст</a>
+                    <a href="#" onClick={e => makeDecision(e, {"type": "code", "code": "", "language": "Язык"})}>Код</a>
+                    <a href="#"  onClick={e => makeDecision(e, {"type": "text", "text": ""})}>Текст</a>
                     <a href="#"  onClick={e => makeDecision(e, {"type": "image"})}>Картинка</a>
                 </div>
             </div>

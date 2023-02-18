@@ -1,23 +1,43 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, memo } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { funky } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
+import DeleteElement from '../../Buttons/DeleteElement';
 
 
-const CodeArea = () => {
-    const [language, setLanguage] = useState('Язык');
-    const [code, setCode] = useState('');
+
+const CodeArea = ({ idx, changeElementContent, savedCode, savedLanguage, deleteElement } ) => {
+    const [language, setLanguage] = useState(savedLanguage);
+    const [code, setCode] = useState(savedCode);
+    
     
 
-function handleClickDeopBox(e: any) {
+function handleClickDeopBox(e) {
     e.preventDefault();
     setLanguage(e.target.id)
 }
 
-    return (
-        <div className='code-Area'>
-            <div className='side-Code-Area'>
+function handleChangeTextArea(e){
+    setCode(e.target.value);
+    
+    let updatedData = {
+        'type': 'code',
+        'code': code,
+        'language': language
+    }
+    changeElementContent(idx, updatedData);
+}
 
+
+
+
+    return (
+        <div className='main-Code'>
+            
+            <div className='code-Area'>
+            
+            <div className='side-Code-Area'>
+                
                 <div className="dropdown">
                     <button className="dropbtn" >{ language }</button>
                     <div className="dropdown-content" onClick={handleClickDeopBox}>
@@ -27,24 +47,28 @@ function handleClickDeopBox(e: any) {
                     </div>
                 </div>
 
-                <textarea className='code-Text-Area' name="code" id="code" cols={30} rows={10} onChange={e => setCode(e.target.value) } value={ code }></textarea>
+                <textarea className='code-Text-Area' name="code" id="code" cols={30} rows={10} onChange={e => handleChangeTextArea(e) } value={ code }></textarea>
 
             </div>
             <div className='side-Code-Area'>
-                <div className="dropdown">
+                {/* <div className="dropdown">
                     <button className="dropbtn" >Стиль</button>
                     <div className="dropdown-content">
                         <a href="#" >Хуёня</a>
                         <a href="#" >Хуйня</a>
                         <a href="#" >Поцелуй в попу</a>
                     </div>
-                </div>
+                </div> */}
 
                 <SyntaxHighlighter language={ language } style={ funky }>{ code }</SyntaxHighlighter>
                 
             </div>
+            
         </div>
+        <DeleteElement className="delete-element" deleteElement = { deleteElement } idx = { idx } />
+        </div>
+        
     )
 }
 
-export default CodeArea
+export default memo(CodeArea)

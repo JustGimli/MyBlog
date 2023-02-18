@@ -5,13 +5,13 @@ import {
     MdOutlineDeleteOutline
 } from "react-icons/md";
 
-const DeleteElement = ({ makeDecision }) => {
+const DeleteElement = ({ idx, deleteElement }) => {
   return (
     <div className='Delete-main'>
       <div className="dropdown">
                 <MdOutlineDeleteOutline className="icon" id='addArea' />
                 <div className="dropdown-content">
-                    <a href="#" onClick={e => makeDecision(e, {"type": "code"})}>Удалить</a>
+                    <a href="#" onClick={e => deleteElement(idx)}>Удалить</a>
                 </div>
             </div>
     </div>
