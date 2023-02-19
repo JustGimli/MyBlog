@@ -10,25 +10,59 @@ import PostElements from './PostElements';
 
 
 const CommandField = () => {
-    const [code, setCode] = useState('');
-    const [postElements, setPostElements] = useState([{'type': 'code'}, {'type': 'text'}]); // Хранит последовательность элементов для текущего поста
+    
+    const [postElements, setPostElements] = useState([]); // Хранит последовательность элементов для текущего поста
 
 
+    const changeElementContent = useCallback((idx, updatedData) => {
+        const newArray = postElements.map((element, index) => {
+            if (idx !== index) {
+              // No change
+              return element;
+            } else {
+              
+              return updatedData;
+            }
+
+        
+    })
+    setPostElements(newArray);}, [postElements])    
+
+    const deleteElement = useCallback((idx) => {
+        const newArray = postElements.filter((element, index) =>
+            index != idx
+          )
+        setPostElements(newArray);
+    }, [postElements])  
+
+    const makeDecision = useCallback((e, updatedData) => {
+        e.preventDefault()
+        let newArray = [...postElements, updatedData];
+        setPostElements(newArray);
+    }, [postElements])  
+
+    function SaveInLocalStorage(){
+        let elements = JSON.stringify(postElements);
+        localStorage.setItem('elements', elements);
+    }
+
+    useEffect(() => {
+        let elements = localStorage.getItem('elements');
+        if (elements){
+            elements = JSON.parse(elements);
+            setPostElements(elements); 
+        }
+        
+         // Возможно ещё нужно проверку написать
+    }, [])
 
    
+    
 
-    function makeDecision(event) {
-        event.preventDefault(); // Чтобы не переходило по ссылке #
-
-
-        console.log(event.target.innerText);
-    }
+    
 
     return (
         <div className='Out-div'>
-
-
-            
             <button onClick={e =>  SaveInLocalStorage() }>Сохранить в LocalStorage</button>
 
             {/* <div className="dropdown">
@@ -38,9 +72,6 @@ const CommandField = () => {
                 </div>
             </div> */}
             <PostElements postElements = { postElements } makeDecision={ makeDecision } changeElementContent={ changeElementContent } deleteElement={deleteElement}/>
-
-
-
         </div>
     )
 }
