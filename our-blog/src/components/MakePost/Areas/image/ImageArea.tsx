@@ -3,7 +3,7 @@ import React from 'react'
 
 export default function ImageItem(props:any) {
 
-    function handleSubmit(e) {
+    function handleSubmit(e:any) {
         const elem = (document.getElementById("photo") as HTMLInputElement)
         console.log(elem?.files)
     }

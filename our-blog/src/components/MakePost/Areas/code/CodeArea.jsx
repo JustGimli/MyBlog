@@ -1,4 +1,4 @@
-import React, { useState, useEffect, memo } from 'react'
+import React, { useState, useEffect, useCallback, memo } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { funky } from 'react-syntax-highlighter/dist/esm/styles/prism';
 
@@ -7,8 +7,12 @@ import DeleteElement from '../../Buttons/DeleteElement';
 
 
 const CodeArea = ({ idx, changeElementContent, savedCode, savedLanguage, deleteElement } ) => {
+    console.log(savedCode);
     const [language, setLanguage] = useState(savedLanguage);
     const [code, setCode] = useState(savedCode);
+    console.log(code);
+
+    
     
     
 

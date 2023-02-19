@@ -1,9 +1,6 @@
 import React, { useState, useEffect, useCallback } from 'react'
 
-/* eslint-disable jsx-a11y/anchor-is-valid */
-import React, { useState, useEffect } from 'react'
 
-import ImageItem from './Areas/image/ImageArea';
 
 
 // import './CodeArea.scss';
@@ -13,36 +10,68 @@ import PostElements from './PostElements';
 
 
 const CommandField = () => {
-    const [code, setCode] = useState('');
-    const [postElements, setPostElements] = useState([{'type': 'code'}, {'type': 'text'}]); // Хранит последовательность элементов для текущего поста
+    
+    const [postElements, setPostElements] = useState([]); // Хранит последовательность элементов для текущего поста
 
 
+    const changeElementContent = useCallback((idx, updatedData) => {
+        const newArray = postElements.map((element, index) => {
+            if (idx !== index) {
+              // No change
+              return element;
+            } else {
+              
+              return updatedData;
+            }
+
+        
+    })
+    setPostElements(newArray);}, [postElements])    
+
+    const deleteElement = useCallback((idx) => {
+        const newArray = postElements.filter((element, index) =>
+            index != idx
+          )
+        setPostElements(newArray);
+    }, [postElements])  
+
+    const makeDecision = useCallback((e, updatedData) => {
+        e.preventDefault()
+        let newArray = [...postElements, updatedData];
+        setPostElements(newArray);
+    }, [postElements])  
+
+    function SaveInLocalStorage(){
+        let elements = JSON.stringify(postElements);
+        localStorage.setItem('elements', elements);
+    }
+
+    useEffect(() => {
+        let elements = localStorage.getItem('elements');
+        if (elements){
+            elements = JSON.parse(elements);
+            setPostElements(elements); 
+        }
+        
+         // Возможно ещё нужно проверку написать
+    }, [])
 
    
+    
 
-    function makeDecision(event) {
-        event.preventDefault();
-
-        console.log(event.target.innerText);
-    }
+    
 
     return (
         <div className='Out-div'>
-
-
-            
             <button onClick={e =>  SaveInLocalStorage() }>Сохранить в LocalStorage</button>
 
             {/* <div className="dropdown">
                 <MdOutlineDeleteOutline className="icon" />
                 <div className="dropdown-content">
-                    <a onClick={makeDecision}>Удалить</a>
+                    <a href="#" onClick={ makeDecision }>Удалить</a>
                 </div>
             </div> */}
             <PostElements postElements = { postElements } makeDecision={ makeDecision } changeElementContent={ changeElementContent } deleteElement={deleteElement}/>
-
-
-
         </div>
     )
 }
