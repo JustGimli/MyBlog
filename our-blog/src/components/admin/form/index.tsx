@@ -34,8 +34,13 @@ export default function FormItem(props: any) {
             if (reason.response!.status === 404) {
                 setElem(
                     <div className="Form-error">
-                        <span>Incorrect username or password</span>
+                        <span>User not Found</span>
                     </div>)
+            
+            } else if (reason.response!.status === 400) {
+                setElem(<div className="Form-error">
+                    <span>Incorrect username or password</span>
+                </div>)
             }
         })
         setData({

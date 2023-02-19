@@ -11,9 +11,9 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import BasicAuthentication
 from rest_framework import generics
 
-from .models import Post, Contributor, Features, Skill
+from .models import Post, Contributor, Features, Skill, Character
 
-from .serializers import PostSerializer, ContributorsSerializer, FeaturesList, SkillSerializer, AdminSerializer
+from .serializers import PostSerializer, ContributorsSerializer, FeaturesList, SkillSerializer, AdminSerializer, CharacterSerialiser
 
 class CursorSetPagination(CursorPagination):
     page_size = 2
@@ -109,6 +109,7 @@ class UserViews(APIView):
             us = User.objects.get(username=login)
 
             if check_password(password, us.password):
+                print("checked true")
                 return True
             return False
 
@@ -119,9 +120,10 @@ class UserViews(APIView):
         userData = AdminSerializer(data=request.data)
         if userData.is_valid():
             if self.check_data(login=request.data['login'], password=request.data['password']):
+                
                 return Response(status=status.HTTP_200_OK)
             else:
-                return Response(status=status.HTTP_404_NOT_FOUND)
+                return Response(status=status.HTTP_400_BAD_REQUEST)
                 
         else:
             return Response(status=status.HTTP_404_NOT_FOUND)
@@ -143,3 +145,15 @@ class MakePost(APIView):
         return Response(newPost.errors, status=status.HTTP_400_BAD_REQUEST)
 
  
+class CharactersViews(APIView):
+
+    def get_object(self):
+        try:
+            Character.objects.all()
+        except Character.DoesNotExist:
+            raise Http404
+        
+    def get(self, request):
+        character= self.get_object()
+        characterJson = CharacterSerialiser(data=character, many=True)
+        return Response(data=characterJson.data, status=status.HTTP_200_OK)

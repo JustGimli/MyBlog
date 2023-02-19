@@ -1,3 +1,4 @@
+/* eslint-disable jsx-a11y/anchor-is-valid */
 import React, { useState, useEffect } from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
 import { funky } from 'react-syntax-highlighter/dist/esm/styles/prism';
@@ -20,9 +21,9 @@ function handleClickDeopBox(e: any) {
                 <div className="dropdown">
                     <button className="dropbtn" >Язык</button>
                     <div className="dropdown-content" onClick={handleClickDeopBox}>
-                        <a href="#" id="python">Python</a>
-                        <a href="#" id="java">Java</a>
-                        <a href="#" id="delphi">Delphi</a>
+                        <a id="python">Python</a>
+                        <a id="java">Java</a>
+                        <a id="delphi">Delphi</a>
                     </div>
                 </div>
 
@@ -33,9 +34,9 @@ function handleClickDeopBox(e: any) {
                 <div className="dropdown">
                     <button className="dropbtn" >Стиль</button>
                     <div className="dropdown-content">
-                        <a href="#" >Хуёня</a>
-                        <a href="#" >Хуйня</a>
-                        <a href="#" >Поцелуй в попу</a>
+                        <a>Хуёня</a>
+                        <a>Хуйня</a>
+                        <a>Поцелуй в попу</a>
                     </div>
                 </div>
 

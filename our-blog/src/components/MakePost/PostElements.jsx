@@ -10,23 +10,15 @@ const PostElements = ({ postElements }) => {
       {
         postElements.map(element => 
 
-            (element.type == 'code') ?
+            (element.type === 'code') ?
                 <CodeArea />:
-                  (element.type == 'text') ?
+                  (element.type === 'text') ?
                     <TextArea />:
-                        (element.type == 'image') ?
+                        (element.type === 'image') ?
                           <ImageArea />:
                               <></>
 
             ,
-
-            
-            
-            
-            
-           
-
-
             // if (element.type == 'code') {
             //     { console.log('good') }
             //     <h1 style={ {color: "white"} }>Код</h1>
