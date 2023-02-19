@@ -31,3 +31,6 @@ class Skill(models.Model):
     title = models.CharField(max_length=25, unique=True)
     rate = models.PositiveSmallIntegerField()
 
+
+class Character(models.Model):
+    name = models.CharField(unique=True, max_length=25)

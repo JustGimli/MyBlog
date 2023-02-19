@@ -1,0 +1,33 @@
+.text-Area {
+    width: 50%;
+    margin: 0 auto;
+    background-color: aliceblue;
+    display: flex;
+    
+    
+    .textarea {
+        
+        margin: 10px;
+        padding: 10px;
+        width: 100%;
+        resize: none;
+        font-family: Arial,sans-serif;
+        font-size: 18px;
+        overflow-x: hidden;
+        overflow-y: auto;
+      
+        display:inline-block;
+
+    }
+
+    .qt_107 {
+        display:inline-block;
+        border: solid 1px #000;
+        min-height: 150px;
+        min-width: 200px;
+        max-width: 695px;
+     }
+
+   
+      
+}

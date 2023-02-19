@@ -24,14 +24,14 @@ export default function MainPage(props:any) {
             {/* <canvas style={{"height": "100%", "width": "100%", "position":"absolute"}} id="example">
             </canvas> */}
 
-            <Stage width={window.innerWidth} height={window.innerHeight} style={{position:'absolute'}}>
+            {/* <Stage width={window.innerWidth} height={window.innerHeight} style={{position:'absolute'}}>
                 
                 <Layer>
                     <Canvas />
                     
                     
                 </Layer>
-            </Stage>
+            </Stage> */}
             <Home/>
             <Featured/>
             <Skills/>
