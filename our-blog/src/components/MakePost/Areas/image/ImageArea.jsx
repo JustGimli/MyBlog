@@ -7,10 +7,10 @@ export default function ImageItem() {
 
 
     function onImageChange(e) {
-        // const elem = (document.getElementById("photo") as HTMLInputElement)
-        
 
-        if (e.target.files.length != 0  && images !== []){
+
+        if (e.target.files.length !== 0  && images !== []){
+
             setImages([e.target.files]);
             console.log(images);
             let url = URL.createObjectURL(images[0])
@@ -23,10 +23,8 @@ export default function ImageItem() {
     return (
         <div className="Image-Item">
             <input type="file" multiple  accept='image/*' onClick={e => onImageChange(e)} />
-            { imageURLs.map((imageSrc, idx) => <img src={ imageSrc } key={ Date.now() }  style={{ width: "200px" }}/>) }
-            {/* <button onClick={handleSubmit}>Submit</button>
-             */}
-             
+
+            { imageURLs.map((imageSrc, idx) => <img src={ imageSrc } key={ Date.now() }  style={{ width: "200px" }}/>) }             
         </div>
     )
 }

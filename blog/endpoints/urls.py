@@ -7,6 +7,7 @@ from .views import ListPostsView, PostView, UpdateCountViews, ContribotorViews, 
 
 urlpatterns = [
     path('posts/', ListPostsView.as_view()),
+    path("posts/update/", PostView.as_view()),
     path('posts/<int:pk>/', PostView.as_view()),
     path("posts/<int:id>/update-views/", UpdateCountViews.as_view()),
     path("contributors/", ContribotorViews.as_view()),

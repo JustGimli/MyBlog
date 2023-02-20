@@ -11,7 +11,6 @@ export default function Article({title, text, photo, date}:IProp) {
     useEffect(()=> {
         const textLog = document.getElementById("text")
         textLog!.innerHTML = text
-        console.log(textLog)
     }, [text])
     
     return (

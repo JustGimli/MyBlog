@@ -1,10 +1,6 @@
 .main-Code{
     display: flex;
 
-    .delete-element{
-        // Как нормельно выровнить
-    }
-
     .code-Area {
         width: 70%;
         margin: 0 auto;
@@ -17,7 +13,6 @@
             min-height: 150px;
             border: 5px solid black;
         }
-    
     
         .dropbtn {
             background-color: #04AA6D;

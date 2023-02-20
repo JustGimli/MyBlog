@@ -41,6 +41,15 @@ class PostView(APIView):
             srPost = PostSerializer(post)
             return Response(srPost.data)
 
+    def post(self, request):
+        newPost = PostSerializer(data=request.data)
+        if newPost.is_valid():
+            newPost.save()
+            print(newPost.data)
+            return Response(newPost.data, status=status.HTTP_201_CREATED)
+
+        return Response(newPost.errors, status=status.HTTP_400_BAD_REQUEST)
+
 
 class UpdateCountViews(APIView):
     
@@ -127,23 +136,6 @@ class UserViews(APIView):
                 
         else:
             return Response(status=status.HTTP_404_NOT_FOUND)
-    
-
-class MakePost(APIView):
-    authentication_classes = [BasicAuthentication]
-    permission_classes = [IsAuthenticated]
-
-
-    def post(self, request):
-        newPost = PostSerializer(data=request.data)
-        
-        if newPost.is_valid():
-            newPost.save()
-
-            return Response(newPost.data, status=status.HTTP_201_CREATED)
-
-        return Response(newPost.errors, status=status.HTTP_400_BAD_REQUEST)
-
  
 class CharactersViews(APIView):
 
@@ -157,3 +149,4 @@ class CharactersViews(APIView):
         character= self.get_object()
         characterJson = CharacterSerialiser(data=character, many=True)
         return Response(data=characterJson.data, status=status.HTTP_200_OK)
+    
