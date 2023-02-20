@@ -41,7 +41,7 @@ class PostView(APIView):
             srPost = PostSerializer(post)
             return Response(srPost.data)
 
-    def post(self, request):
+    def post(self, request): 
         newPost = PostSerializer(data=request.data)
         if newPost.is_valid():
             newPost.save()
@@ -72,7 +72,7 @@ class ContribotorViews(APIView):
 
     def _getContr(self):
         try:
-            return Contributor.objects.all()
+            return Contributor.objects.all() 
         except Contributor.DoesNotExist:
             raise Http404
 
@@ -141,12 +141,13 @@ class CharactersViews(APIView):
 
     def get_object(self):
         try:
-            Character.objects.all()
+            return Character.objects.all()
         except Character.DoesNotExist:
             raise Http404
         
     def get(self, request):
-        character= self.get_object()
-        characterJson = CharacterSerialiser(data=character, many=True)
-        return Response(data=characterJson.data, status=status.HTTP_200_OK)
+        character = self.get_object()
+        characterJson = CharacterSerialiser(character, many=True)
+        print(characterJson.data)
+        return Response(characterJson.data, status=status.HTTP_200_OK)
     
