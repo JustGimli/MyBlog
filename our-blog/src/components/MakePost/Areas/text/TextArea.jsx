@@ -19,12 +19,14 @@ const TextArea = ({ idx, changeElementContent, savedText, deleteElement }) => {
 
   
   return (
-    <div className='text-Area'>
-      <textarea className='textarea'  name="text" id="text" cols="30" rows="10" value={ text } onChange={e => handleChange(e) }></textarea>
-      
-      <DeleteElement deleteElement = { deleteElement } idx = { idx } />
-       
+    <>
+    <div className="Delete-Box">
+        <DeleteElement deleteElement = { deleteElement } idx = { idx } />    
     </div>
+        <div className='text-Area'>
+        <textarea className='textarea'  name="text" id="text" cols="30" rows="10" value={ text } onChange={e => handleChange(e) }></textarea> 
+        </div>
+    </>
   )
 }
 

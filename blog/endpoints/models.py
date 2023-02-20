@@ -3,10 +3,10 @@ from django.shortcuts import get_object_or_404
 
 class Post(models.Model): 
     title = models.CharField(max_length=100, blank=False, unique=False)
-    text = models.TextField()
+    text = models.JSONField()
     views = models.PositiveIntegerField()
     date = models.DateField(auto_now_add=True)
-    photo = models.FileField(upload_to="uploads/%Y")
+    photo = models.FileField(upload_to="uploads/%Y", blank=True)
 
     def __str__(self) -> str:
         return f"""title:{self.title},
@@ -31,6 +31,6 @@ class Skill(models.Model):
     title = models.CharField(max_length=25, unique=True)
     rate = models.PositiveSmallIntegerField()
 
-
 class Character(models.Model):
     name = models.CharField(unique=True, max_length=25)
+
