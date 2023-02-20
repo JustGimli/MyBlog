@@ -72,6 +72,7 @@ const CommandField = () => {
                 </div>
             </div> */}
             <PostElements postElements = { postElements } makeDecision={ makeDecision } changeElementContent={ changeElementContent } deleteElement={deleteElement}/>
+            
         </div>
     )
 }
