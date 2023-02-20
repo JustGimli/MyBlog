@@ -2,7 +2,7 @@ from django.contrib.auth.models import User
 
 from rest_framework import serializers
 
-from .models import Post, Contributor, Features, Skill, Character
+from .models import Post, Contributor, Features, Skill, Character, Post
 
 class PostSerializer(serializers.ModelSerializer):
     
@@ -34,6 +34,7 @@ class AdminSerializer(serializers.Serializer):
     class Meta:
         model = User
         fields = ["username", "password"]
+
 
 class CharacterSerialiser(serializers.Serializer):
 

@@ -4,7 +4,7 @@ import React, { useState, useEffect, useCallback } from 'react'
 
 
 // import './CodeArea.scss';
-import PostElements from './PostElements';
+import PostElements from './MakePosts';
 
 
 
@@ -13,11 +13,9 @@ const CommandField = () => {
     
     const [postElements, setPostElements] = useState([]); // Хранит последовательность элементов для текущего поста
 
-
     const changeElementContent = useCallback((idx, updatedData) => {
         const newArray = postElements.map((element, index) => {
             if (idx !== index) {
-              // No change
               return element;
             } else {
               
@@ -30,7 +28,7 @@ const CommandField = () => {
 
     const deleteElement = useCallback((idx) => {
         const newArray = postElements.filter((element, index) =>
-            index != idx
+            index !== idx
           )
         setPostElements(newArray);
     }, [postElements])  

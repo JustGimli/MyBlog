@@ -42,7 +42,6 @@ const Canvas = () => {
                 
             }
             setIsUpdate(false);
-            console.log(balls);
             
         } else {
             for (let i = 0; i < balls.length; i++) {

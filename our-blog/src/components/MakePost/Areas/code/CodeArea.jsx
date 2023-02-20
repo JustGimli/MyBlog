@@ -7,14 +7,8 @@ import DeleteElement from '../../Buttons/DeleteElement';
 
 
 const CodeArea = ({ idx, changeElementContent, savedCode, savedLanguage, deleteElement } ) => {
-    console.log(savedCode);
     const [language, setLanguage] = useState(savedLanguage);
-    const [code, setCode] = useState(savedCode);
-    console.log(code);
-
-    
-    
-    
+    const [code, setCode] = useState(savedCode);    
 
 function handleClickDeopBox(e) {
     e.preventDefault();
@@ -37,7 +31,7 @@ function handleChangeTextArea(e){
 
     return (
         <div className='main-Code'>
-            
+            <DeleteElement className="delete-element" deleteElement = { deleteElement } idx = { idx } />
             <div className='code-Area'>
             
             <div className='side-Code-Area'>
@@ -55,21 +49,11 @@ function handleChangeTextArea(e){
 
             </div>
             <div className='side-Code-Area'>
-                {/* <div className="dropdown">
-                    <button className="dropbtn" >Стиль</button>
-                    <div className="dropdown-content">
-                        <a href="#" >Хуёня</a>
-                        <a href="#" >Хуйня</a>
-                        <a href="#" >Поцелуй в попу</a>
-                    </div>
-                </div> */}
-
                 <SyntaxHighlighter language={ language } style={ funky }>{ code }</SyntaxHighlighter>
-                
             </div>
             
         </div>
-        <DeleteElement className="delete-element" deleteElement = { deleteElement } idx = { idx } />
+       
         </div>
         
     )

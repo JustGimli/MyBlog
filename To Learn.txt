@@ -1,3 +1,0 @@
-display
-justify 
-align
