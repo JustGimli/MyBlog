@@ -27,17 +27,8 @@ const PostElements = ({ postElements, makeDecision, changeElementContent, delete
                 <CodeArea key={ idx } idx={ idx } changeElementContent={ changeElementContent } savedCode={element.code} savedLanguage={element.language}  deleteElement = { deleteElement }/>:
                   (element.type === 'text') ?
                     <TextArea key={ idx } idx={ idx }  changeElementContent = { changeElementContent } savedText={element.text} deleteElement = { deleteElement }/>:
-<<<<<<< HEAD:our-blog/src/components/MakePost/PostElements.jsx
                         (element.type == 'image') ?
-                          <ImageArea key={ idx }  idx={ idx }  changeElementContent = { changeElementContent } savedURL={element.url} deleteElement = { deleteElement }/>:
-=======
-                        (element.type === 'image') ?
-<<<<<<< HEAD
-                          <ImageArea key={ idx }  idx={ idx }  changeElementContent = { changeElementContent } deleteElement = { deleteElement }/>:
->>>>>>> ca145f59a46f6df16c77483de1e936568a6ef68e:our-blog/src/components/MakePost/MakePosts.jsx
-=======
-                          <ImageItem key={ idx }  idx={ idx }  changeElementContent = { changeElementContent } deleteElement = { deleteElement }/>:
->>>>>>> 985cebc1c40ab33ea820f1e04443d9156a899e6e
+                          <ImageItem key={ idx }  idx={ idx }  changeElementContent = { changeElementContent } savedURL={element.url} deleteElement = { deleteElement }/>:
                               <></>,
             
              
