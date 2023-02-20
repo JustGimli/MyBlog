@@ -54,11 +54,6 @@ const CommandField = () => {
          // Возможно ещё нужно проверку написать
     }, [])
 
-   
-    
-
-    
-
     return (
         <div className='Out-div'>
             <button onClick={e =>  SaveInLocalStorage() }>Сохранить в LocalStorage</button>

@@ -1,7 +1,7 @@
 import React, { memo } from 'react'
 import CodeArea from './Areas/code/CodeArea';
 import TextArea from './Areas/text/TextArea';
-import ImageArea from './Areas/image/ImageArea';
+import ImageItem from './Areas/image/ImageArea';
 import AddElement from './Buttons/AddElement';
 import DeleteElement from './Buttons/DeleteElement';
 import axios from 'axios';
@@ -13,6 +13,7 @@ const PostElements = ({ postElements, makeDecision, changeElementContent, delete
             title: postElements[0]['text'],
             text: JSON.stringify(postElements),
             views: 0,
+            // photo: postElements['image']
         })
     }
   
@@ -31,10 +32,13 @@ const PostElements = ({ postElements, makeDecision, changeElementContent, delete
                           <ImageArea key={ idx }  idx={ idx }  changeElementContent = { changeElementContent } savedURL={element.url} deleteElement = { deleteElement }/>:
 =======
                         (element.type === 'image') ?
+<<<<<<< HEAD
                           <ImageArea key={ idx }  idx={ idx }  changeElementContent = { changeElementContent } deleteElement = { deleteElement }/>:
 >>>>>>> ca145f59a46f6df16c77483de1e936568a6ef68e:our-blog/src/components/MakePost/MakePosts.jsx
+=======
+                          <ImageItem key={ idx }  idx={ idx }  changeElementContent = { changeElementContent } deleteElement = { deleteElement }/>:
+>>>>>>> 985cebc1c40ab33ea820f1e04443d9156a899e6e
                               <></>,
-
             
              
         )

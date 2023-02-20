@@ -12,7 +12,7 @@ class Post(models.Model):
         return f"""title:{self.title},
         date:{self.date},
         views:{self.views}"""
-    
+     
     class Meta:
         verbose_name = 'post'
 

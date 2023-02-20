@@ -14,9 +14,9 @@ export interface NewData{
     url: string 
 }
 
-    export default function ImageItem({ idx, changeElementContent, savedURL, deleteElement }:Props) {
-    const [images, setImages] = useState<File | null>();
-    const [imageURLs, setImageURLs] = useState<string>(savedURL);
+export default function ImageItem({ idx, changeElementContent, savedURL, deleteElement }:Props) {
+const [images, setImages] = useState<File | null>();
+const [imageURLs, setImageURLs] = useState<string>(savedURL);
 
     
    
@@ -33,22 +33,16 @@ export interface NewData{
             }
 
               changeElementContent(idx, data);
-
         }
-        
     }
-
-    
 
     return (
         <div className="Image-Item">
-            <input type="file" multiple  accept='image/*' onChange={ e => onImageChange(e)} /> <img src={ imageURLs } key={ Date.now() } className="Img-Form" alt={imageURLs}/> 
+            {images ==null ? 
+            <input type="file" multiple  accept='image/*' onChange={e => onImageChange(e)} />:
+            <img src={ imageURLs } key={ Date.now() } className="Img-Form" alt={imageURLs}/> }
             <DeleteElement deleteElement = { deleteElement } idx = { idx } />
         </div>
     )
 }
-
-
-
-
-
+ 
