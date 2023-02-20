@@ -1,4 +1,4 @@
-import React, { useState, ChangeEvent, useEffect } from 'react'
+import React, { useState, ChangeEvent} from 'react'
 
 import DeleteElement from '../../Buttons/DeleteElement';
 
@@ -26,10 +26,11 @@ const [imageURLs, setImageURLs] = useState<string>(savedURL);
             const url = URL.createObjectURL(e.target.files![0])
             setImages(e.target.files![0])
             setImageURLs(url)
-
+            
+            
             const data = {
                 type: "image",
-                url: url
+                file: e.target.files![0]
             }
 
               changeElementContent(idx, data);

@@ -6,7 +6,7 @@ class Post(models.Model):
     text = models.JSONField()
     views = models.PositiveIntegerField()
     date = models.DateField(auto_now_add=True)
-    photo = models.FileField(upload_to="uploads/posts/%Y")
+    photo = models.FileField(upload_to="uploads/posts/%Y", blank=True)
 
     def __str__(self) -> str:
         return f"""title:{self.title},
