@@ -6,7 +6,7 @@ class Post(models.Model):
     text = models.JSONField()
     views = models.PositiveIntegerField()
     date = models.DateField(auto_now_add=True)
-    photo = models.FileField(upload_to="uploads/%Y", blank=True)
+    photo = models.FileField(upload_to="uploads/posts/%Y")
 
     def __str__(self) -> str:
         return f"""title:{self.title},
@@ -32,5 +32,5 @@ class Skill(models.Model):
     rate = models.PositiveSmallIntegerField()
 
 class Character(models.Model):
-    name = models.CharField(unique=True, max_length=25)
+    name = models.CharField(unique=True, max_length=50)
 
