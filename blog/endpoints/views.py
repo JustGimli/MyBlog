@@ -3,7 +3,6 @@ from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password
 
 from rest_framework import status
-from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.pagination import CursorPagination
@@ -146,8 +145,7 @@ class CharactersViews(APIView):
             raise Http404
         
     def get(self, request):
-        character = self.get_object()
+        character = self.get_object() 
         characterJson = CharacterSerialiser(character, many=True)
-        print(characterJson.data)
         return Response(characterJson.data, status=status.HTTP_200_OK)
     

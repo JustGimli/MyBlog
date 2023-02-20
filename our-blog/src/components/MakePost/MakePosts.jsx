@@ -1,19 +1,23 @@
 import React, { memo } from 'react'
+
+import axios from 'axios';
+
 import CodeArea from './Areas/code/CodeArea';
 import TextArea from './Areas/text/TextArea';
 import ImageItem from './Areas/image/ImageArea';
 import AddElement from './Buttons/AddElement';
-import DeleteElement from './Buttons/DeleteElement';
-import axios from 'axios';
 
 const PostElements = ({ postElements, makeDecision, changeElementContent, deleteElement }) => {
 
     function handlePost(e) {
+
+        const url = postElements.map(obj => obj.url)
+        console.log(postElements)
         axios.post("http://127.0.0.1:8000/posts/update/", {
             title: postElements[0]['text'],
             text: JSON.stringify(postElements),
             views: 0,
-            // photo: postElements['image']
+            photo: url
         })
     }
   

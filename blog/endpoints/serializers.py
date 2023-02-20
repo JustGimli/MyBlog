@@ -30,14 +30,14 @@ class SkillSerializer(serializers.ModelSerializer):
         fields = "__all__"
 
 
-class AdminSerializer(serializers.Serializer):
+class AdminSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
         fields = ["username", "password"]
 
 
-class CharacterSerialiser(serializers.Serializer):
+class CharacterSerialiser(serializers.ModelSerializer):
 
     class Meta:
         model = Character
-        field = '__all__'
+        fields = ['name']

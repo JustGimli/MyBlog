@@ -10,7 +10,7 @@ export default function Home(props){
             axios.get("http://127.0.0.1:8000/characters/")
             .then((responce) => {
                 console.log(responce)
-                setData(responce.data.map(obj => obj.text))
+                setData(responce.data.map(obj => obj.name))
                 setNum(responce.data.length)
                 
             })
