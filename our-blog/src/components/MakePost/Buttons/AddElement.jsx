@@ -15,7 +15,7 @@ const AddElement = ({ makeDecision }) => {
                 <div className="dropdown-content">
                     <a href="#" onClick={e => makeDecision(e, {"type": "code", "code": "", "language": "Язык"})}>Код</a>
                     <a href="#"  onClick={e => makeDecision(e, {"type": "text", "text": ""})}>Текст</a>
-                    <a href="#"  onClick={e => makeDecision(e, {"type": "image"})}>Картинка</a>
+                    <a href="#"  onClick={e => makeDecision(e, {"type": "image", "url": ""})}>Картинка</a>
                 </div>
             </div>
     </div>

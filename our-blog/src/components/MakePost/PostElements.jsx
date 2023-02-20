@@ -21,7 +21,7 @@ const PostElements = ({ postElements, makeDecision, changeElementContent, delete
                   (element.type == 'text') ?
                     <TextArea key={ idx } idx={ idx }  changeElementContent = { changeElementContent } savedText={element.text} deleteElement = { deleteElement }/>:
                         (element.type == 'image') ?
-                          <ImageArea key={ idx }  idx={ idx }  changeElementContent = { changeElementContent } deleteElement = { deleteElement }/>:
+                          <ImageArea key={ idx }  idx={ idx }  changeElementContent = { changeElementContent } savedURL={element.url} deleteElement = { deleteElement }/>:
                               <></>,
 
             
