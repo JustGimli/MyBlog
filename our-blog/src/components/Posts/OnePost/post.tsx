@@ -1,12 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { funky } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { okaidia, nord, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
+
+import { useEffectOnce } from "./useEffectOnce";
 
 interface ObjProp {
     'type'?: string,
     'text'?: string,
-    'code'?: string,
-    'image'?: string
+    'code': string | '';
+    'image'?: string,
+    'language'?: string
 }
 
 interface IProp {
@@ -17,21 +20,26 @@ interface IProp {
 }
 
 export default function Article({ title, text, photo, date }: IProp) {
-    const [data, setData] = useState<React.ReactElement>()
+    const [data, setData] = useState([<></>]);
+   
 
-    useEffect(() => {
-
+    useEffectOnce(() => {
+        console.log(text);
         for (const item in text) {
 
             switch (text[item]['type']) {
                 case 'text':
-                    const areaText = <div>{text[item]['text']}</div>
-                    setData(<>{data}{areaText}</>)
+                    const areaText = <div className="Text-Wrapper"><div className="textBlock">{text[item]['text']}</div></div> 
+                    setData((prevData) => [...prevData, areaText])
+                    
                     break;
 
                 case 'code':
-                    const areaCode = <div>code</div>
-                    setData(<>{data}{areaCode}</>)
+                    
+                    const areaCode = <div className="Code-Wrapper"><div className="codeBlock"><SyntaxHighlighter  language={ text[item]['language'] } style={ okaidia } className="code" >{ text[item]['code'] }</SyntaxHighlighter></div></div> 
+                    
+                    setData((prevData) => [...prevData, areaCode])
+                    
                     break;
 
                 case 'image':
@@ -45,7 +53,7 @@ export default function Article({ title, text, photo, date }: IProp) {
 
         }
 
-    }, [text])
+    })
 
 
     return (
@@ -53,9 +61,18 @@ export default function Article({ title, text, photo, date }: IProp) {
             <div className="Article-Item">
                 <h2 className="Article-Title">{title}</h2>
                 <img src={`http://127.0.0.1:8000/${photo}`} alt={title} className="Article-Img" />
-                <div className="Article-Text" id="text">{data}</div>
+                <div className="Article-Elements">
+                {
+                    data.map((element, idx)=> {
+                        return <div key={idx} >{element}</div>
+                    })
+                }
+                </div>
+                
+                {/* <div className="Article-Text" id="text">{data}</div> */}
                 <div className="Article-Date">{date}</div>
             </div>
         </div>
     )
 }
+

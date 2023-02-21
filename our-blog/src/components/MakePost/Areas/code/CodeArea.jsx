@@ -44,7 +44,7 @@ function handleChangeTextArea(e){
                         <a href="#" id="delphi">Delphi</a>
                     </div>
                 </div>
-
+                
                 <textarea className='code-Text-Area' name="code" id="code" cols={30} rows={10} onChange={e => handleChangeTextArea(e) } value={ code }></textarea>
 
             </div>

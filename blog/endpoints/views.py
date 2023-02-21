@@ -40,6 +40,7 @@ class PostView(APIView):
             return Response(srPost.data)
 
     def post(self, request): 
+        print(request.data)
         newPost = PostSerializer(data=request.data)
         if newPost.is_valid():
             newPost.save()
