@@ -9,7 +9,6 @@ export default function Home(props){
         useEffect(() => {
             axios.get("http://127.0.0.1:8000/characters/")
             .then((responce) => {
-                console.log(responce)
                 setData(responce.data.map(obj => obj.name))
                 setNum(responce.data.length)
                 
