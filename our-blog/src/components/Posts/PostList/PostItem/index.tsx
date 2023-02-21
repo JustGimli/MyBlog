@@ -29,7 +29,7 @@ export default function Item({ title, views, urlImg, text, id, date }: IProp) {
             <p className="Description">{description}</p>
             <img src={urlImg} alt={title} className="Post-Img"></img>
             <div className="Date">{date}</div> 
-            <div className="Views"> <AiOutlineEye/></div>
+            <div className="Views"> <AiOutlineEye/> { views}</div>
         </div> 
     ) 
 }

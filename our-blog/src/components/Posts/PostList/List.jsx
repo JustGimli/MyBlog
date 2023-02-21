@@ -28,7 +28,6 @@ export default function PostList(props) {
                         const nextPage = responce.data.next
                         setHref(nextPage)
                         setPosts([...posts, ...responce.data.results])
-                        
                     })
                     .finally(() => setFetching(false)) 
             }
