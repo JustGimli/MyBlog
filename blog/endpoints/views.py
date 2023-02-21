@@ -46,7 +46,6 @@ class PostView(APIView):
         newPost = PostSerializer(data=request.data)
         if newPost.is_valid():
             newPost.save()
-            print(newPost.data)
             return Response(newPost.data, status=status.HTTP_201_CREATED)
         
         return Response(newPost.errors, status=status.HTTP_400_BAD_REQUEST)

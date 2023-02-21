@@ -29,6 +29,10 @@
         align-items: center;
         justify-content: start;
     }
+
+    .Article-Elements {
+        width: 80%;
+    }
 }
 
 .notFound {
@@ -36,3 +40,71 @@
     text-align: center;
     margin-top: 15%;
 }  
+
+
+// .BlockWrapper {
+    
+
+.Text-Wrapper{
+    display: flex;
+    justify-content: center;
+    margin-top: 5px;
+    width: 100%;
+    .textBlock {
+        font-size: 20px;
+       
+        width: 100%;
+        // text-align: center;
+        margin-right: 0;
+        padding-right: 0;
+    
+    }
+}
+    
+.Code-Wrapper{
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+    width: 100%;
+
+    ::-webkit-scrollbar {
+        width: 5px;
+    }
+
+    ::-webkit-scrollbar-thumb {
+        background: #121212;
+        border-radius: 10px;
+        width: 5px;
+        &:hover {
+            
+            background: crimson;
+            transition: background 0.6s ease 0.6s;
+
+        }
+    }
+
+    ::-webkit-scrollbar-track {
+        background: black;
+       
+    }
+
+    
+
+    .codeBlock {
+        font-size: 20px;
+        width: 100%;
+    
+        .code{
+            background-color: azure;
+        }
+    }
+
+}
+
+   
+
+
+
+
+
+
