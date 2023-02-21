@@ -17,7 +17,6 @@ const PostElements = ({ postElements, makeDecision, changeElementContent, delete
             "title": "test",
             "text": JSON.stringify(postElements)
         }
-        console.log(sendData)
         axios.post("http://127.0.0.1:8000/posts/update/", sendData, {
             headers: {
                 "Content-Type": "multipart/form-data",
