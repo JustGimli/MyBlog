@@ -1,12 +1,8 @@
 import React, { useState, useEffect, useCallback } from 'react'
 
+import axios from 'axios';
 
-
-
-// import './CodeArea.scss';
 import PostElements from './MakePosts';
-
-
 
 
 const CommandField = () => {
@@ -20,10 +16,9 @@ const CommandField = () => {
             } else {
               
               return updatedData;
-            }
-
-        
+            }        
     })
+
     setPostElements(newArray);}, [postElements])    
 
     const deleteElement = useCallback((idx) => {
@@ -50,23 +45,33 @@ const CommandField = () => {
             elements = JSON.parse(elements);
             setPostElements(elements); 
         }
-        
-         // Возможно ещё нужно проверку написать
     }, [])
 
-    return (
-        <div className='Out-div'>
-            <button onClick={e =>  SaveInLocalStorage() }>Сохранить в LocalStorage</button>
+    function handlePost(e) {
+        const file = postElements.filter(obj => obj.type === 'image')[0]["file"]
+        
+        const sendData = {
+            "photo": file,
+            "title": postElements.find(obj => obj.type === "text")['text'],
+            "text": JSON.stringify(postElements)
+        }
+        axios.post("http://127.0.0.1:8000/posts/update/", sendData, {
+            headers: {
+                "Content-Type": "multipart/form-data",
+        }})
 
-            {/* <div className="dropdown">
-                <MdOutlineDeleteOutline className="icon" />
-                <div className="dropdown-content">
-                    <a href="#" onClick={ makeDecision }>Удалить</a>
-                </div>
-            </div> */}
-            <PostElements postElements = { postElements } makeDecision={ makeDecision } changeElementContent={ changeElementContent } deleteElement={deleteElement}/>
-            
-        </div>
+        setPostElements([])
+        
+    }
+
+    return (
+            <div className='Out-div'>
+                <button onClick={e =>  SaveInLocalStorage() }>Сохранить в LocalStorage</button> 
+                <button onClick={handlePost} className="AcceptButton"> Submit </button>
+
+                <PostElements postElements = { postElements } makeDecision={ makeDecision } changeElementContent={ changeElementContent } deleteElement={deleteElement}/>
+                
+            </div>
     )
 }
 

@@ -9,19 +9,6 @@ import AddElement from './Buttons/AddElement';
 
 const PostElements = ({ postElements, makeDecision, changeElementContent, deleteElement }) => {
 
-    function handlePost(e) {
-        const file = postElements.filter(obj => obj.type === 'image')[0]["file"]
-        
-        const sendData = {
-            "photo": file,
-            "title": postElements.find(obj => obj.type === "text")['text'],
-            "text": JSON.stringify(postElements)
-        }
-        axios.post("http://127.0.0.1:8000/posts/update/", sendData, {
-            headers: {
-                "Content-Type": "multipart/form-data",
-        }})
-    }
   
   return (
     <div style={ {height: "60px"} }>
@@ -38,7 +25,7 @@ const PostElements = ({ postElements, makeDecision, changeElementContent, delete
     <div style={ {height: "200px"} }>
         <AddElement makeDecision={ makeDecision }/>
     </div>
-    <button onClick={handlePost} className="AcceptButton"> Submit </button>
+    
     </div>
   )
 }

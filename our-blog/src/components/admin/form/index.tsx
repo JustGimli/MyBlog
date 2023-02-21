@@ -21,7 +21,7 @@ export default function FormItem(props: any) {
 
     function handleAction(e:any) {
         axios.post("http://127.0.0.1:8000/login/", {
-            "login": data["login"],
+            "username": data["login"],
             "password": data["password"]
         })
         .then((responce) => {
