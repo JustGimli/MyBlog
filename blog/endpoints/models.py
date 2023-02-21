@@ -1,5 +1,6 @@
 from django.db import models
 from django.shortcuts import get_object_or_404
+import uuid
 
 class Post(models.Model): 
     title = models.CharField(max_length=100, blank=False, unique=False)
@@ -33,4 +34,8 @@ class Skill(models.Model):
 
 class Character(models.Model):
     name = models.CharField(unique=True, max_length=50)
+
+class Image(models.Model):
+    # post_id = models.ForeignKey()
+    image = models.ImageField(blank=True, null=True, upload_to=f"uploads/posts/%Y{ uuid.uuid4() }" ) # Этот адрес нужно запоминать в бд
 

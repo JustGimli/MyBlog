@@ -4,19 +4,27 @@ import { Link } from "react-router-dom";
 import axios from "axios";
 import {AiOutlineEye} from "react-icons/ai"
 
+interface ObjProp{
+    'type'?: string,
+    'text'?: string
+}
+
 interface IProp {
     id: number
     title: string,
     views: number,
     urlImg: string,
-    text: Array<object>,
+    text: Array<ObjProp>,
     date: string
 }
+
+
 
 export default function Item({ title, views, urlImg, text, id, date }: IProp) {
     
 
-    const description = text.filter(obj => obj["type"] === "text").map(obj => obj['text'])
+
+    const description = text.filter((obj: ObjProp) => obj["type"] === "text").map(obj => obj['text'])
 
     function clickHandler(e: any) {
         axios.patch(`http://127.0.0.1:8000/posts/${id}/update-views/`, { count: views + 1 });
