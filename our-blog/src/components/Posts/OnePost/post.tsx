@@ -21,7 +21,7 @@ export default function Article({title, text, photo, date}:IProp) {
                     break;
                 
                 case 'code':
-                    const areaCode = <div>code</div>
+                    const areaCode = <div>{text[item]['code']}</div>
                     setData(<>{data}{areaCode}</>)
                     break;
                 

@@ -41,11 +41,9 @@ class PostView(APIView):
             return Response(srPost.data)
 
     def post(self, request): 
-        print(request.data)
         newPost = PostSerializer(data=request.data)
         if newPost.is_valid():
             newPost.save()
-            print(newPost.data)
             return Response(newPost.data, status=status.HTTP_201_CREATED)
         
         return Response(newPost.errors, status=status.HTTP_400_BAD_REQUEST)

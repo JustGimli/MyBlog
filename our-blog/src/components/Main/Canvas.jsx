@@ -74,8 +74,7 @@ const Canvas = () => {
             
                     {
                         
-                        balls.map((ball, idx) => {
-                            {console.log(balls[20]) }    
+                        balls.map((ball, idx) => {   
                             <Circle
                                 
                                 x={ball.x - ball.radius} y={ball.y - ball.radius} width={ball.radius * 2} height={ball.radius * 2}
