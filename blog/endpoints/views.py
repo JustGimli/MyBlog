@@ -3,6 +3,7 @@ from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password
 
 from rest_framework import status
+from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.pagination import CursorPagination
@@ -10,7 +11,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.authentication import BasicAuthentication
 from rest_framework import generics
 
-from .models import Post, Contributor, Features, Skill, Character
+from .models import Post, Contributor, Features, Skill, Character, Image
 
 from .serializers import PostSerializer, ContributorsSerializer, FeaturesList, SkillSerializer, AdminSerializer, CharacterSerialiser
 
@@ -149,3 +150,16 @@ class CharactersViews(APIView):
         characterJson = CharacterSerialiser(character, many=True)
         return Response(characterJson.data, status=status.HTTP_200_OK)
     
+
+class  ImagesViews(APIView):
+    parser_classes = (MultiPartParser, FormParser)
+
+    def post(self, request, format=None):
+        print(request.data)
+        print(format)
+        image =  request.data.__getitem__('image')
+
+        Image.objects.create(image=image)
+
+        return Response(status=status.HTTP_200_OK)        
+
