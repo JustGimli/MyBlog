@@ -5,8 +5,9 @@ import { funky } from 'react-syntax-highlighter/dist/esm/styles/prism';
 interface ObjProp {
     'type'?: string,
     'text'?: string,
-    'code'?: string,
-    'image'?: string
+    [code: string]: string | undefined;
+    'image'?: string,
+    'language'?: string
 }
 
 interface IProp {
@@ -30,7 +31,7 @@ export default function Article({ title, text, photo, date }: IProp) {
                     break;
 
                 case 'code':
-                    // <SyntaxHighlighter language={ text[item]['language'] } style={ funky }>{ text[item]['code']}</SyntaxHighlighter>
+                    <SyntaxHighlighter language={ text[item]['language'] } style={ funky }>{ text[item]['code'] }</SyntaxHighlighter>
                     const areaCode = <div>code</div>
                     setData(<>{data}{areaCode}</>)
                     break;
