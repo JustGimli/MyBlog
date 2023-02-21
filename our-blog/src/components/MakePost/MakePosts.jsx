@@ -10,24 +10,23 @@ import AddElement from './Buttons/AddElement';
 const PostElements = ({ postElements, makeDecision, changeElementContent, deleteElement }) => {
 
     function handlePost(e) {
-        const file = postElements.map(obj => obj.file)
-        
-        const formData = new FormData()
-        formData.append("photo", file)
-        formData.append("title", postElements[0]['text'])
-        formData.append("views", 0)
-        formData.append("text", JSON.stringify(postElements))
-        console.log(formData)
-        axios.post("http://127.0.0.1:8000/posts/update/", formData, {
-        headers: {
-            'Content-Type': 'multipart/form-data'
+        const file = postElements.filter(obj => obj.type === 'image')[0]["file"]
+
+        const sendData = {
+            "photo": file,
+            "title": "test",
+            "text": JSON.stringify(postElements)
+        }
+        console.log(sendData)
+        axios.post("http://127.0.0.1:8000/posts/update/", sendData, {
+            headers: {
+                "Content-Type": "multipart/form-data",
         }})
     }
   
   return (
     <div style={ {height: "60px"} }>
-        <h2 className='Head'>В начале текстовое поле для Title</h2>
-        <form>
+    <h2 className='Head'>В начале текстовое поле для Title</h2>
     {
         postElements.map((element, idx) => 
             
@@ -44,7 +43,6 @@ const PostElements = ({ postElements, makeDecision, changeElementContent, delete
     </div>
     
     <button onClick={handlePost} className="AcceptButton"> Submit </button>
-    </form>
     </div>
 
   )

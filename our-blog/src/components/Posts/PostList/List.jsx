@@ -25,7 +25,6 @@ export default function PostList(props) {
             {   
                 axios.get(`${href}`)
                     .then(responce => {
-
                         const nextPage = responce.data.next
                         setHref(nextPage)
                         setPosts([...posts, ...responce.data.results])

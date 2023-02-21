@@ -41,6 +41,7 @@ class PostView(APIView):
             return Response(srPost.data)
 
     def post(self, request): 
+        print(request.data)
         newPost = PostSerializer(data=request.data)
         if newPost.is_valid():
             newPost.save()
@@ -106,7 +107,7 @@ class SkillViews(APIView):
     def get(self, request, format=None):
         contr = self._getContr()
         contrSer = SkillSerializer(contr, many=True)
-        
+         
         return Response(contrSer.data, status=status.HTTP_200_OK)
 
 

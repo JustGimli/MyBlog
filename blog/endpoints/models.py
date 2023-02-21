@@ -4,10 +4,10 @@ from django.shortcuts import get_object_or_404
 class Post(models.Model): 
     title = models.CharField(max_length=100, blank=False, unique=False)
     text = models.JSONField()
-    views = models.PositiveIntegerField()
+    views = models.PositiveIntegerField(default=0, blank=True)
     date = models.DateField(auto_now_add=True)
-    photo = models.FileField(upload_to="uploads/posts/%Y", blank=True)
-
+    photo = models.ImageField(upload_to="uploads/posts/%Y", blank=True)
+ 
     def __str__(self) -> str:
         return f"""title:{self.title},
         date:{self.date},
