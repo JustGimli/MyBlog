@@ -6,7 +6,7 @@ from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.pagination import CursorPagination
 from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny, IsAuthenticated
-from rest_framework.authentication import SessionAuthentication
+from rest_framework.authentication import TokenAuthentication
 from rest_framework import generics
 
 from .models import Post, Contributor, Features, Skill, Character, Image
@@ -26,6 +26,7 @@ class ListPostsView(generics.ListAPIView):
 
 
 class PostView(APIView):
+    permission_classes = [IsAuthenticatedOrReadOnly]
 
     def _get_object(self,pk):
         try:
@@ -40,7 +41,7 @@ class PostView(APIView):
             return Response(srPost.data)
 
     def post(self, request): 
-        print(request.data)
+        print(request)
         newPost = PostSerializer(data=request.data)
         if newPost.is_valid():
             newPost.save()
