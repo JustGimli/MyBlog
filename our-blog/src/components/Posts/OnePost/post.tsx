@@ -22,8 +22,7 @@ interface IProp {
 
 export default function Article({ title, text, photo, date, imagesURLs }: IProp) {
     const [data, setData] = useState([<></>]);
-    // const [photoIDX, setPhotoIDX] = useState(0);
-    // const [isTitleImage, setIsTitleImage] = useState(true);
+    
    
 
     useEffectOnce(() => {
