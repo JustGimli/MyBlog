@@ -68,7 +68,7 @@ const PostElements = ({ postElements, makeDecision, changeElementContent, delete
     <div style={ {height: "200px"} }>
         <AddElement makeDecision={ makeDecision }/>
     </div>
-    <button onClick={handlePost} className="AcceptButton"> Submit </button>
+    
     </div>
   )
 }

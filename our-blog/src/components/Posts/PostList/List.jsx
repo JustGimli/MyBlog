@@ -5,7 +5,7 @@ import axios from "axios";
 import Item from "./PostItem";
 
 
-export default function PostList(props) {
+export default function List(props) {
 
     const [posts, setPosts] =useState([])
     const [href, setHref] = useState("http://127.0.0.1:8000/posts/")

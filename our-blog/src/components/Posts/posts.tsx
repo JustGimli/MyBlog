@@ -1,7 +1,7 @@
 import React from "react";
 
 import Navbar from "../navbar";
-import PostList from "./PostList/List";
+import List from "./PostList/List";
 import ScrollUp from "../scrollUp";
 
 export default function Posts(props: any) {
@@ -10,7 +10,7 @@ export default function Posts(props: any) {
             <Navbar />
             <div className="Background">
                 <div className="max-width">
-                    <PostList />
+                    <List />
                     <ScrollUp />
                 </div>
             </div>

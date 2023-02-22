@@ -1,14 +1,12 @@
 from django.http import Http404, HttpResponse
 from django.contrib.auth.models import User
 from django.contrib.auth.hashers import check_password
-
 from rest_framework import status
-from rest_framework.parsers import MultiPartParser, FormParser
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.pagination import CursorPagination
-from rest_framework.permissions import IsAuthenticated
-from rest_framework.authentication import BasicAuthentication
+from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny, IsAuthenticated
+from rest_framework.authentication import SessionAuthentication
 from rest_framework import generics
 
 from .models import Post, Contributor, Features, Skill, Character, Image
@@ -131,7 +129,7 @@ class UpdateCountViews(APIView):
         return Response(status=status.HTTP_204_NO_CONTENT)
     
 
-class ContribotorViews(APIView):
+class ContributorViews(APIView):
 
     def _getContr(self):
         try:
@@ -142,7 +140,7 @@ class ContribotorViews(APIView):
     def get(self, request, format=None):
         contr = self._getContr()
         contrSer = ContributorsSerializer(contr, many=True)
-        
+
         return Response(contrSer.data, status=status.HTTP_200_OK)
 
 class FeaturesViews(APIView):
@@ -175,30 +173,17 @@ class SkillViews(APIView):
 
 
 class UserViews(APIView): 
-    
-    def check_data(self, login, password):
-        try:
-            us = User.objects.get(username=login)
-
-            if check_password(password, us.password):
-                print("checked true")
-                return True
-            return False
-
-        except User.DoesNotExist:
-            raise Http404
-
+    permission_classes = [AllowAny]
+ 
     def post(self, request, format=None):
-        userData = AdminSerializer(data=request.data)
-        if userData.is_valid():
-            if self.check_data(login=request.data['login'], password=request.data['password']):
-                
-                return Response(status=status.HTTP_200_OK)
-            else:
-                return Response(status=status.HTTP_400_BAD_REQUEST)
-                
-        else:
-            return Response(status=status.HTTP_404_NOT_FOUND)
+        print(request.data)
+        serializer = AdminSerializer(data=self.request.data, 
+                                        context={'request': self.request}) 
+        serializer.is_valid(raise_exception=True)
+        user = serializer.validated_data['user']
+        # login(request, user)
+        return Response(None, status=status.HTTP_202_ACCEPTED)
+
  
 class CharactersViews(APIView):
 
@@ -213,16 +198,3 @@ class CharactersViews(APIView):
         characterJson = CharacterSerialiser(character, many=True)
         return Response(characterJson.data, status=status.HTTP_200_OK)
     
-
-class  ImagesViews(APIView):
-    parser_classes = (MultiPartParser, FormParser)
-
-    def post(self, request, format=None):
-        print(request.data)
-        print(format)
-        image =  request.data.__getitem__('image')
-
-        Image.objects.create(image=image)
-
-        return Response(status=status.HTTP_200_OK)        
-

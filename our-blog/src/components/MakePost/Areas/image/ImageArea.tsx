@@ -40,10 +40,11 @@ const [imageURLs, setImageURLs] = useState<string>(savedURL);
 
     return (
         <div className="Image-Item">
-            {images ==null ? 
-            <input type="file" multiple  accept='image/*' onChange={e => onImageChange(e)} />:
-            <img src={ imageURLs } key={ Date.now() } className="Img-Form" alt={imageURLs}/> }
             <DeleteElement deleteElement = { deleteElement } idx = { idx } />
+            {images ==null ? 
+            <input type="file" multiple  accept='image/*' onChange={e => onImageChange(e)} className="Input-Photo" />:
+            <img src={ imageURLs } key={ Date.now() } className="Img-Form" alt={imageURLs}/> }
+            
         </div>
     )
 }
