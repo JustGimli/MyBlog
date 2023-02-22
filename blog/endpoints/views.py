@@ -11,7 +11,7 @@ from rest_framework import generics
 
 from .models import Post, Contributor, Features, Skill, Character, Image
 
-from .serializers import PostSerializer, ContributorsSerializer, FeaturesList, SkillSerializer, AdminSerializer, CharacterSerialiser
+from .serializers import PostSerializer, ContributorsSerializer, FeaturesList, SkillSerializer, AdminSerializer, CharacterSerialiser, ImageSerializer
 
 class CursorSetPagination(CursorPagination):
     page_size = 2
@@ -37,17 +37,80 @@ class PostView(APIView):
 
     def get(self, request, pk, format=None):
             post = self._get_object(pk) 
+            
             srPost = PostSerializer(post)
-            return Response(srPost.data)
+            print(post.text)
+            images = Image.objects.filter(post_id=pk)
+            imagesURLs = [str(image.image) for image in images]
+            
+
+            
+            allData = {
+                'generalData': {
+                    'title': post.title,
+                    'text': post.text,
+                    'date': str(post.date),
+                    'views': post.views,
+                    'photo': str(post.photo)
+                },
+                'articleImages': imagesURLs
+            }
+
+            
+            return Response(allData, status=status.HTTP_200_OK)
 
     def post(self, request): 
-        print(request)
         newPost = PostSerializer(data=request.data)
         if newPost.is_valid():
             newPost.save()
             return Response(newPost.data, status=status.HTTP_201_CREATED)
         
-        return Response(newPost.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+        title = request.data.get( 'generalData[title]' , False )
+        text = request.data.get(  'generalData[text]', False )
+        photo = request.data.get(  'generalData[photo]', False )
+
+        # print(text)
+        newData = { 'title': title, 'text': text, 'photo': photo }
+        newPost = PostSerializer(data=newData)
+        if newPost.is_valid():
+            
+            newPost.save()
+
+            post = Post.objects.last()
+
+           
+
+            ### Парсинг QueryDict
+
+            i = 0
+            doParsing = True
+            while doParsing:
+                image = request.data.get(  f'articleImages[articleImages][{ i }]', False )
+
+                if image != False:
+                    
+                    try:
+                        print(image)
+                        post.image_set.create(image=image)
+                    except:
+                        print('ПИзаж')
+                        return Response(status=status.HTTP_400_BAD_REQUEST)
+
+                    
+                else:
+                    doParsing = False
+                i += 1
+                    
+            return Response(status=status.HTTP_201_CREATED)
+
+        return Response(status=status.HTTP_400_BAD_REQUEST)
+    
+
+        
+            
+        
+        
 
 
 class UpdateCountViews(APIView):
@@ -119,7 +182,7 @@ class UserViews(APIView):
                                         context={'request': self.request}) 
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data['user']
-        # login(request, user)
+
         return Response(None, status=status.HTTP_202_ACCEPTED)
 
  

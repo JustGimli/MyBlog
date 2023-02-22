@@ -29,8 +29,9 @@ const [imageURLs, setImageURLs] = useState<string>(savedURL);
             
             
             const data = {
-                type: "image",
-                file: e.target.files![0]
+                'type': "image",
+                'file': e.target.files![0],
+                'url': e.target.files![0].name
             }
 
               changeElementContent(idx, data);

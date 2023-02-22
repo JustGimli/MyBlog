@@ -16,15 +16,19 @@ interface IProp {
     title: string,
     text: Array<ObjProp>,
     photo: string,
-    date?: string
+    date?: string,
+    imagesURLs: Array<string>
 }
 
-export default function Article({ title, text, photo, date }: IProp) {
+export default function Article({ title, text, photo, date, imagesURLs }: IProp) {
     const [data, setData] = useState([<></>]);
+    
    
 
     useEffectOnce(() => {
         console.log(text);
+        let isTitleImage = true;
+        let photoIDX = 0;
         for (const item in text) {
 
             switch (text[item]['type']) {
@@ -43,9 +47,16 @@ export default function Article({ title, text, photo, date }: IProp) {
                     break;
 
                 case 'image':
-                    // const imageArea = <img src={`http://127.0.0.1:8000/${photo}`} alt={title}   className="Article-Img"/>  // must get url from backend
-                    // setData(<>{data}{imageArea}</>)
-                    // console.log(imageArea)
+                    if (isTitleImage) {
+                        isTitleImage = false
+                    } else {
+                        const imageArea = <img src={`http://127.0.0.1:8000/media/${imagesURLs[photoIDX]}`} alt={title}   className="Article-Img"/>  // must get url from backend
+                        setData((prevData) => [...prevData, imageArea])
+                        console.log(imageArea)
+                        photoIDX += 1 
+                        
+                    }
+                    
                     break;
                 default:
                     console.error("Not found parse")
@@ -60,7 +71,7 @@ export default function Article({ title, text, photo, date }: IProp) {
         <div className="max-width">
             <div className="Article-Item">
                 <h2 className="Article-Title">{title}</h2>
-                <img src={`http://127.0.0.1:8000/${photo}`} alt={title} className="Article-Img" />
+                <img src={`http://127.0.0.1:8000/media/${photo}`} alt={title} className="Article-Img" />
                 <div className="Article-Elements">
                 {
                     data.map((element, idx)=> {

@@ -3,7 +3,7 @@ from django.contrib.auth.models import User
 
 from rest_framework import serializers
 
-from .models import Post, Contributor, Features, Skill, Character, Post
+from .models import Post, Contributor, Features, Skill, Character, Post, Image
 
 class PostSerializer(serializers.ModelSerializer):
     
@@ -65,3 +65,10 @@ class CharacterSerialiser(serializers.ModelSerializer):
     class Meta:
         model = Character
         fields = ['name']
+
+
+class ImageSerializer(serializers.ModelSerializer):
+    
+    class Meta: 
+        model = Image
+        fields = "__all__" 

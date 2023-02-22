@@ -49,27 +49,55 @@ const CommandField = () => {
     }, [])
 
     function handlePost(e) {
-        const file = postElements.filter(obj => obj.type === 'image')[0]["file"]
+
+        let firstImage = true; 
+        let articleImages = [];
+        let file;
+        for (let i = 0; i < postElements.length; i++){
+            const element = postElements[i]
+            if (element.type == 'image'){
+                if (firstImage){
+                    file =  element.file
+                    firstImage = false;
+                } else {
+                    articleImages.push(element.file)
+                }
+                
+            } 
+        }
+        
+    
+        
+
+        // const articleImages = images.map((image, idx) => {if (idx != 0) return image.file})
+        
         
         const sendData = {
-            "photo": file,
-            "title": postElements.find(obj => obj.type === "text")['text'],
-            "text": JSON.stringify(postElements)
+            "generalData": {
+                "photo": file,
+                "title": postElements.find(obj => obj.type === "text")['text'],
+                "text": JSON.stringify(postElements),
+                
+
+                
+            }, 
+            "articleImages": {
+                articleImages
+            }
+            
         }
         axios.post("http://127.0.0.1:8000/posts/update/", sendData, {
             headers: {
                 "Content-Type": "multipart/form-data",
                 Authorization: `Token ${Token}`
         }})
-
-        setPostElements([])
-        
+        // setPostElements([])
     }
 
     return (
             <div className='Out-div'>
                 <button onClick={e =>  SaveInLocalStorage() }>Сохранить в LocalStorage</button> 
-                <button onClick={handlePost} className="AcceptButton"> Submit </button>
+                <button onClick={e => handlePost(e)} className="AcceptButton"> Submit </button>
 
                 <PostElements postElements = { postElements } makeDecision={ makeDecision } changeElementContent={ changeElementContent } deleteElement={deleteElement}/>
                 

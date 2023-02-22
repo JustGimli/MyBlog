@@ -27,6 +27,7 @@ export default function List(props) {
                     .then(responce => {
                         const nextPage = responce.data.next
                         setHref(nextPage)
+                        
                         setPosts([...posts, ...responce.data.results])
                     })
                     .finally(() => setFetching(false)) 
@@ -44,7 +45,7 @@ export default function List(props) {
 
     return (
         <div className="PostList"> 
-            {posts.map(obj => <Item  key={obj.id} urlImg={obj.photo} title={obj.title} views={obj.views} text={obj.text}  id={obj.id} date={obj.date} />)} 
+            {posts.map(obj => <Item  key={obj.id} urlImg={obj.photo} title={obj.title} views={obj.views} text={JSON.parse(obj.text)}  id={obj.id} date={obj.date} />)} 
         </div>  
 
     ) 

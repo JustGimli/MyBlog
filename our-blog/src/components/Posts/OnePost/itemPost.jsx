@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
 import axios from "axios";
@@ -8,18 +8,30 @@ import Article from "./post";
 
 export default function SetArticle(props) {
 
-    
+
     const params = useParams()
     const [postItem, setPost] = useState(null)
+    const [imagesURLs, setImagesURLs] = useState([])
+
 
     useEffect(() => {
         axios.get(`http://127.0.0.1:8000/posts/${params.id}/`)
-        .then(responce => {
-            setPost(responce.data)
-    })
+            .then(responce => {
+                console.log()
+                responce.data.generalData.text = JSON.parse(responce.data.generalData.text)
+                
+                // http://127.0.0.1:8000/media/uploads/posts/2023/755996403486998_altqimx.jpg
+                
+                setPost(responce.data.generalData)
+
+                setImagesURLs(responce.data.articleImages)
+                if (!imagesURLs){
+                    setImagesURLs([])
+                }
+            })
     }, [params.id])
-    
-    if(!postItem) return ( 
+
+    if (!postItem) return (
         <div className="max-width">
             <div className="notFound">
                 <h2>NOT FOUND</h2>
@@ -28,6 +40,6 @@ export default function SetArticle(props) {
     )
 
     return (
-        <Article title={postItem.title} text={postItem.text} photo={postItem.photo} date={postItem.date} />
+        <Article title={postItem.title} text={postItem.text} photo={postItem.photo} date={postItem.date} imagesURLs = { imagesURLs } />
     )
 }
