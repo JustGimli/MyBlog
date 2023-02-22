@@ -24,7 +24,8 @@ export default function Item({ title, views, urlImg, text, id, date }: IProp) {
     
 
 
-    const description = text.filter((obj: ObjProp) => obj["type"] === "text").map(obj => obj['text'])
+    // const description = text.filter((obj: ObjProp) => obj["type"] === "text").map(obj => obj['text'])
+    const description = "Hello"
 
     function clickHandler(e: any) {
         axios.patch(`http://127.0.0.1:8000/posts/${id}/update-views/`, { count: views + 1 });

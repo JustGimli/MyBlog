@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import React, { memo, useState } from 'react'
 
 import axios from 'axios';
 
@@ -8,14 +8,44 @@ import ImageItem from './Areas/image/ImageArea';
 import AddElement from './Buttons/AddElement';
 
 const PostElements = ({ postElements, makeDecision, changeElementContent, deleteElement }) => {
-
+    
     function handlePost(e) {
-        const file = postElements.filter(obj => obj.type === 'image')[0]["file"]
+
+        let firstImage = true; 
+        let articleImages = [];
+        let file;
+        for (let i = 0; i < postElements.length; i++){
+            const element = postElements[i]
+            if (element.type == 'image'){
+                if (firstImage){
+                    file =  element.file
+                    firstImage = false;
+                } else {
+                    articleImages.push(element.file)
+                }
+                
+            } 
+        }
+        
+    
+        
+
+        // const articleImages = images.map((image, idx) => {if (idx != 0) return image.file})
+        
         
         const sendData = {
-            "photo": file,
-            "title": postElements.find(obj => obj.type === "text")['text'],
-            "text": JSON.stringify(postElements)
+            "generalData": {
+                "photo": file,
+                "title": postElements.find(obj => obj.type === "text")['text'],
+                "text": JSON.stringify(postElements),
+                
+
+                
+            }, 
+            "articleImages": {
+                articleImages
+            }
+            
         }
         axios.post("http://127.0.0.1:8000/posts/update/", sendData, {
             headers: {

@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404
 import uuid
 
 class Post(models.Model): 
-    title = models.CharField(max_length=100, blank=False, unique=False)
+    title = models.CharField(max_length=100, blank=False, unique=True)
     text = models.JSONField()
     views = models.PositiveIntegerField(default=0, blank=True)
     date = models.DateField(auto_now_add=True)
@@ -36,6 +36,6 @@ class Character(models.Model):
     name = models.CharField(unique=True, max_length=50)
 
 class Image(models.Model):
-    # post_id = models.ForeignKey()
-    image = models.ImageField(blank=True, null=True, upload_to=f"uploads/posts/%Y{ uuid.uuid4() }" ) # Этот адрес нужно запоминать в бд
+    post_id = models.ForeignKey(Post, on_delete=models.CASCADE)
+    image = models.ImageField(blank=True, null=True, upload_to=f"uploads/posts/%Y" ) # Этот адрес нужно запоминать в бд
 
