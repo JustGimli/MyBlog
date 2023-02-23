@@ -1,6 +1,7 @@
 import React, { useState, useEffect, useCallback } from 'react'
 
 import axios from 'axios';
+import { Token } from '../admin/form/context/token';
 
 import PostElements from './MakePosts';
 
@@ -88,6 +89,7 @@ const CommandField = () => {
         axios.post("http://127.0.0.1:8000/posts/update/", sendData, {
             headers: {
                 "Content-Type": "multipart/form-data",
+                Authorization: `Token ${Token}`
         }})
         // setPostElements([])
     }

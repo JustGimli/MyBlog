@@ -5,8 +5,7 @@ from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.pagination import CursorPagination
-from rest_framework.permissions import IsAuthenticatedOrReadOnly, AllowAny, IsAuthenticated
-from rest_framework.authentication import SessionAuthentication
+from rest_framework.permissions import  AllowAny
 from rest_framework import generics
 
 from .models import Post, Contributor, Features, Skill, Character, Image
@@ -26,6 +25,7 @@ class ListPostsView(generics.ListAPIView):
 
 
 class PostView(APIView):
+    permission_classes = [AllowAny]
 
     def _get_object(self,pk):
         try:
@@ -37,8 +37,6 @@ class PostView(APIView):
     def get(self, request, pk, format=None):
             post = self._get_object(pk) 
             
-            srPost = PostSerializer(post)
-            print(post.text)
             images = Image.objects.filter(post_id=pk)
             imagesURLs = [str(image.image) for image in images]
             
@@ -59,14 +57,17 @@ class PostView(APIView):
             return Response(allData, status=status.HTTP_200_OK)
 
     def post(self, request): 
-        print(request.data)
+        print(request)
+        newPost = PostSerializer(data=request.data)
+        if newPost.is_valid():
+            newPost.save()
+            return Response(newPost.data, status=status.HTTP_201_CREATED)
         
         
         title = request.data.get( 'generalData[title]' , False )
         text = request.data.get(  'generalData[text]', False )
         photo = request.data.get(  'generalData[photo]', False )
 
-        # print(text)
         newData = { 'title': title, 'text': text, 'photo': photo }
         newPost = PostSerializer(data=newData)
         if newPost.is_valid():
@@ -74,10 +75,6 @@ class PostView(APIView):
             newPost.save()
 
             post = Post.objects.last()
-
-           
-
-            ### Парсинг QueryDict
 
             i = 0
             doParsing = True
@@ -87,30 +84,18 @@ class PostView(APIView):
                 if image != False:
                     
                     try:
-                        print(image)
                         post.image_set.create(image=image)
                     except:
-                        print('ПИзаж')
                         return Response(status=status.HTTP_400_BAD_REQUEST)
 
                     
                 else:
                     doParsing = False
-
                 i += 1
-
-            ### Парсинг QueryDict
                     
             return Response(status=status.HTTP_201_CREATED)
 
         return Response(status=status.HTTP_400_BAD_REQUEST)
-    
-
-        
-            
-        
-        
-
 
 class UpdateCountViews(APIView):
     
@@ -181,7 +166,7 @@ class UserViews(APIView):
                                         context={'request': self.request}) 
         serializer.is_valid(raise_exception=True)
         user = serializer.validated_data['user']
-        # login(request, user)
+
         return Response(None, status=status.HTTP_202_ACCEPTED)
 
  

@@ -1,5 +1,7 @@
 import axios, { AxiosError } from "axios";
-import React, {  useState } from "react";
+import React, {  useContext, useState } from "react";
+import { useNavigate } from "react-router-dom";
+import { Token, TokenContext } from "./context/token";
 
 interface LoginForm {
     login: string,
@@ -10,8 +12,9 @@ export default function FormItem(props: any) {
     const [elem ,setElem] = useState<React.ReactElement | null>(null)
     const [data, setData] = useState<LoginForm>({
         login: "",
-        password: ""
-    })
+        password: ""})
+    const navigate = useNavigate()
+    const {token, updateToken} = useContext(Token) as TokenContext
 
     function handleChange(e: any) {
         setData({...data,
@@ -20,28 +23,22 @@ export default function FormItem(props: any) {
     }
 
     function handleAction(e:any) {
-        axios.post("http://127.0.0.1:8000/login/", {
+        axios.post("http://127.0.0.1:8000/token/", {
             "username": data["login"],
             "password": data["password"]
         })
         .then((responce) => {
-            // console.log(responce)
-            if (responce.data.status) {
+            console.log(responce.data.token)
+            updateToken(responce.data.token)
+            console.log(token)
+            navigate('/make-post', {replace: true})
 
-            }
         }) 
         .catch((reason: AxiosError<{additionalInfo:string}>) => {
-            if (reason.response!.status === 404) {
                 setElem(
                     <div className="Form-error">
-                        <span>User not Found</span>
+                        <span>Incorrect username of password</span>
                     </div>)
-            
-            } else if (reason.response!.status === 400) {
-                setElem(<div className="Form-error">
-                    <span>Incorrect username or password</span>
-                </div>)
-            }
         })
         setData({
             login: "",
@@ -56,7 +53,6 @@ export default function FormItem(props: any) {
             
                 <form  method="post" className="Form-Form" >Login:
                         <input type="text" name="login" onChange={handleChange} />
-                        
                         Password
                         <input type="password" name="password" onChange={handleChange} />
                         {elem}
