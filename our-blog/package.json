@@ -18,8 +18,9 @@
     "react-router-dom": "^6.8.1",
     "react-scripts": "5.0.1",
     "react-syntax-highlighter": "^15.5.0",
-    "react-tsparticles": "^2.9.3",
+    "react-tsparticles": "^1.39.0",
     "sass": "^1.58.1",
+    "tsparticles-path-polygon": "^1.39.0",
     "typescript": "^4.9.5",
     "web-vitals": "^2.1.4"
   },
@@ -54,6 +55,4 @@
     "@types/react-dom": "^18.0.11",
     "@types/react-syntax-highlighter": "^15.5.6"
   }
-
-
 }

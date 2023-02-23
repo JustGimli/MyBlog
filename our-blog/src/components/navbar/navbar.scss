@@ -9,9 +9,9 @@
 
 /* animation */
 [data-aos="navbar"] {
-    background: #121212;
+    opacity: 0.7;
     padding: 30px 0px;
-    transition-property: background, padding;
+    transition-property: background, padding, opacity;
     border: {
         bottom-left-radius: 0%;
         bottom-right-radius: 0%;
@@ -20,6 +20,7 @@
         .Header-Span{
             color: white;
         }
+        opacity: 1;
         background:crimson;
         padding: 15px 0px;
         border: {
