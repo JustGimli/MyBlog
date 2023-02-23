@@ -4,7 +4,7 @@ import 'aos/dist/aos.css';
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 import MainPage from './components/Main/routing';
-import ErrorPage from './components/error-page';
+import ErrorPage from './components/ErrorPage/error-page';
 import Posts from './components/Posts/posts';
 import Post from './components/Posts/OnePost/itemPost';
 import CommandField from './components/MakePost/CommandField';

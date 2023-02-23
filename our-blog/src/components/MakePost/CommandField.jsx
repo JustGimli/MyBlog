@@ -22,10 +22,18 @@ const CommandField = () => {
     setPostElements(newArray);}, [postElements])    
 
     const deleteElement = useCallback((idx) => {
-        const newArray = postElements.filter((element, index) =>
-            index !== idx
-          )
-        setPostElements(newArray);
+        setPostElements(
+            postElements.map((element, index) => {
+                if (index == idx) {
+                    return {'type': 'deleted',
+                            'element': <div></div>}
+                } else {
+                    return element
+                }
+            }
+          ))
+        
+        
     }, [postElements])  
 
     const makeDecision = useCallback((e, updatedData) => {
@@ -35,6 +43,8 @@ const CommandField = () => {
     }, [postElements])  
 
     function SaveInLocalStorage(){
+        setPostElements(postElements.filter(element => element.type !== 'deleted'))
+        console.log(postElements);
         let elements = JSON.stringify(postElements);
         localStorage.setItem('elements', elements);
     }
@@ -52,6 +62,7 @@ const CommandField = () => {
         let firstImage = true; 
         let articleImages = [];
         let file;
+        setPostElements(postElements.filter(element => element.type !== 'deleted'))
         for (let i = 0; i < postElements.length; i++){
             const element = postElements[i]
             if (element.type === 'image'){
@@ -82,6 +93,7 @@ const CommandField = () => {
                 Authorization: `Token ${token}`
         }})
         setPostElements([])
+        localStorage.setItem('elements', '');
     }
 
     return (

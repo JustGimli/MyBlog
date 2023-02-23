@@ -1,6 +1,6 @@
-import React, { useState, memo } from 'react'
+import React, {useState, memo} from 'react'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { funky } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { okaidia} from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import DeleteElement from '../../Buttons/DeleteElement';
 
@@ -10,9 +10,11 @@ const CodeArea = ({ idx, changeElementContent, savedCode, savedLanguage, deleteE
     const [language, setLanguage] = useState(savedLanguage);
     const [code, setCode] = useState(savedCode);    
 
+    const [languageList, setLanguageList] =useState(['asm6502', 'c', 'cpp', 'csharp', 'css', 'django', 'docker', 'go', 'http', 'java', 'javascript', 'nasm','nginx', 'pascal', 'php', 'python', 'ruby', 'scss', 'sql', 'typescript'])
+
 function handleClickDeopBox(e) {
     e.preventDefault();
-    setLanguage(e.target.id)
+    setLanguage(e.target.id.toLowerCase())
 }
 
 function handleChangeTextArea(e){
@@ -39,9 +41,13 @@ function handleChangeTextArea(e){
                 <div className="dropdown">
                     <button className="dropbtn" >{ language }</button>
                     <div className="dropdown-content" onClick={handleClickDeopBox}>
-                        <a href="#" id="python">Python</a>
-                        <a href="#" id="java">Java</a>
-                        <a href="#" id="delphi">Delphi</a>
+                        {
+                            languageList.map((lang, idx) => {
+                                return <a href="#" id={lang} key={idx}>{lang}</a>
+                            })
+                        }
+                       
+                    
                     </div>
                 </div>
                 
@@ -49,7 +55,7 @@ function handleChangeTextArea(e){
 
             </div>
             <div className='side-Code-Area'>
-                <SyntaxHighlighter language={ language } style={ funky }>{ code }</SyntaxHighlighter>
+                <SyntaxHighlighter language={ language } style={ okaidia }>{ code }</SyntaxHighlighter>
             </div>
             
         </div>

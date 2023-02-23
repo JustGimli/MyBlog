@@ -11,8 +11,10 @@ const PostElements = ({ postElements, makeDecision, changeElementContent, delete
   return (
     <div style={ {height: "60px"} }>
     {
+        
         postElements.map((element, idx) => 
-            (element.type === 'code') ?
+            
+            (element?.type === 'code') ?
                 <CodeArea key={ idx } idx={ idx } changeElementContent={ changeElementContent } savedCode={element.code} savedLanguage={element.language}  deleteElement = { deleteElement }/>:
                   (element.type === 'text') ?
                     <TextArea key={ idx } idx={ idx }  changeElementContent = { changeElementContent } savedText={element.text} deleteElement = { deleteElement }/>:
