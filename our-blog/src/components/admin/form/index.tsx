@@ -28,9 +28,7 @@ export default function FormItem(props: any) {
             "password": data["password"]
         })
         .then((responce) => {
-            console.log(responce.data.token)
             updateToken(responce.data.token)
-            console.log(token)
             navigate('/make-post', {replace: true})
 
         }) 

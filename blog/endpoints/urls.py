@@ -3,12 +3,12 @@ from django.urls import path, include
 from rest_framework.urlpatterns import format_suffix_patterns
 
 
-from .views import ListPostsView, PostView, UpdateCountViews, ContributorViews,  FeaturesViews, SkillViews,  UserViews, CharactersViews
+from .views import ListPostsView, PostView, UpdateCountViews, ContributorViews,  FeaturesViews, SkillViews,  UserViews, CharactersViews, PostArticle
 
 
 urlpatterns = [
     path('posts/', ListPostsView.as_view()),
-    path("posts/update/", PostView.as_view()),
+    path("posts/update/", PostArticle.as_view()),
     path('posts/<int:pk>/', PostView.as_view()),
     path("posts/<int:id>/update-views/", UpdateCountViews.as_view()),
     path("contributors/", ContributorViews.as_view()),

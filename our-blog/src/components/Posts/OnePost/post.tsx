@@ -1,6 +1,6 @@
-import React, { useEffect, useState } from "react";
+import React, {  useState } from "react";
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter';
-import { okaidia, nord, coy } from 'react-syntax-highlighter/dist/esm/styles/prism';
+import { okaidia} from 'react-syntax-highlighter/dist/esm/styles/prism';
 
 import { useEffectOnce } from "./useEffectOnce";
 
@@ -22,22 +22,23 @@ interface IProp {
 
 export default function Article({ title, text, photo, date, imagesURLs }: IProp) {
     const [data, setData] = useState([<></>]);
-    
-   
 
     useEffectOnce(() => {
-        console.log(text);
+
         let isTitleImage = true;
         let photoIDX = 0;
+        let isTitle = true
         for (const item in text) {
 
             switch (text[item]['type']) {
                 case 'text':
-                    const areaText = <div className="Text-Wrapper"><div className="textBlock">{text[item]['text']}</div></div> 
-                    setData((prevData) => [...prevData, areaText])
-                    
+                    if (isTitle) {
+                        isTitle = false
+                    }else {
+                        const areaText = <div className="Text-Wrapper"><div className="textBlock">{text[item]['text']}</div></div> 
+                        setData((prevData) => [...prevData, areaText])   
+                    }
                     break;
-
                 case 'code':
                     
                     const areaCode = <div className="Code-Wrapper"><div className="codeBlock"><SyntaxHighlighter  language={ text[item]['language'] } style={ okaidia } className="code" >{ text[item]['code'] }</SyntaxHighlighter></div></div> 
@@ -50,9 +51,8 @@ export default function Article({ title, text, photo, date, imagesURLs }: IProp)
                     if (isTitleImage) {
                         isTitleImage = false
                     } else {
-                        const imageArea = <img src={`http://127.0.0.1:8000/media/${imagesURLs[photoIDX]}`} alt={title}   className="Article-Img"/>  // must get url from backend
+                        const imageArea = <img src={`http://127.0.0.1:8000/media/${imagesURLs[photoIDX]}`} alt={title}   className="Article-Img"/> 
                         setData((prevData) => [...prevData, imageArea])
-                        console.log(imageArea)
                         photoIDX += 1 
                         
                     }
@@ -79,8 +79,6 @@ export default function Article({ title, text, photo, date, imagesURLs }: IProp)
                     })
                 }
                 </div>
-                
-                {/* <div className="Article-Text" id="text">{data}</div> */}
                 <div className="Article-Date">{date}</div>
             </div>
         </div>

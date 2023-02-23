@@ -1,11 +1,9 @@
-from django.http import Http404, HttpResponse
-from django.contrib.auth.models import User
-from django.contrib.auth.hashers import check_password
+from django.http import Http404
 from rest_framework import status
 from rest_framework.response import Response
 from rest_framework.views import APIView
 from rest_framework.pagination import CursorPagination
-from rest_framework.permissions import  AllowAny
+from rest_framework.permissions import  IsAuthenticated
 from rest_framework import generics
 
 from .models import Post, Contributor, Features, Skill, Character, Image
@@ -25,7 +23,6 @@ class ListPostsView(generics.ListAPIView):
 
 
 class PostView(APIView):
-    permission_classes = [AllowAny]
 
     def _get_object(self,pk):
         try:
@@ -54,10 +51,15 @@ class PostView(APIView):
             }
 
             
+
             return Response(allData, status=status.HTTP_200_OK)
 
+
+class PostArticle(APIView):
+    permission_classes = [IsAuthenticated]
+
+    
     def post(self, request): 
-        print(request)
         newPost = PostSerializer(data=request.data)
         if newPost.is_valid():
             newPost.save()
@@ -158,10 +160,8 @@ class SkillViews(APIView):
 
 
 class UserViews(APIView): 
-    permission_classes = [AllowAny]
  
     def post(self, request, format=None):
-        print(request.data)
         serializer = AdminSerializer(data=self.request.data, 
                                         context={'request': self.request}) 
         serializer.is_valid(raise_exception=True)

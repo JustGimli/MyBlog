@@ -6,8 +6,6 @@ const TextArea = ({ idx, changeElementContent, savedText, deleteElement }) => {
 
   const [text, setText] = useState(savedText);
   
-  
-
   function handleChange(e){
     setText(e.target.value);
     let updatedData = {
@@ -16,7 +14,6 @@ const TextArea = ({ idx, changeElementContent, savedText, deleteElement }) => {
     }
     changeElementContent(idx, updatedData);
   }
-
   
   return (
     <>

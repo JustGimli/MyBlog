@@ -1,4 +1,4 @@
-import React, { useState, useEffect, useCallback } from 'react'
+import React, { useState, useEffect, useCallback, useContext } from 'react'
 
 import axios from 'axios';
 import { Token } from '../admin/form/context/token';
@@ -7,15 +7,14 @@ import PostElements from './MakePosts';
 
 
 const CommandField = () => {
-    
     const [postElements, setPostElements] = useState([]); // Хранит последовательность элементов для текущего поста
+    const {token} = useContext(Token)
 
     const changeElementContent = useCallback((idx, updatedData) => {
         const newArray = postElements.map((element, index) => {
             if (idx !== index) {
               return element;
             } else {
-              
               return updatedData;
             }        
     })
@@ -55,7 +54,7 @@ const CommandField = () => {
         let file;
         for (let i = 0; i < postElements.length; i++){
             const element = postElements[i]
-            if (element.type == 'image'){
+            if (element.type === 'image'){
                 if (firstImage){
                     file =  element.file
                     firstImage = false;
@@ -66,20 +65,11 @@ const CommandField = () => {
             } 
         }
         
-    
-        
-
-        // const articleImages = images.map((image, idx) => {if (idx != 0) return image.file})
-        
-        
         const sendData = {
             "generalData": {
                 "photo": file,
                 "title": postElements.find(obj => obj.type === "text")['text'],
                 "text": JSON.stringify(postElements),
-                
-
-                
             }, 
             "articleImages": {
                 articleImages
@@ -89,18 +79,16 @@ const CommandField = () => {
         axios.post("http://127.0.0.1:8000/posts/update/", sendData, {
             headers: {
                 "Content-Type": "multipart/form-data",
-                Authorization: `Token ${Token}`
+                Authorization: `Token ${token}`
         }})
-        // setPostElements([])
+        setPostElements([])
     }
 
     return (
             <div className='Out-div'>
                 <button onClick={e =>  SaveInLocalStorage() }>Сохранить в LocalStorage</button> 
                 <button onClick={e => handlePost(e)} className="AcceptButton"> Submit </button>
-
-                <PostElements postElements = { postElements } makeDecision={ makeDecision } changeElementContent={ changeElementContent } deleteElement={deleteElement}/>
-                
+                <PostElements postElements = { postElements } makeDecision={ makeDecision } changeElementContent={ changeElementContent } deleteElement={deleteElement}/>               
             </div>
     )
 }

@@ -17,13 +17,8 @@ export default function SetArticle(props) {
     useEffect(() => {
         axios.get(`http://127.0.0.1:8000/posts/${params.id}/`)
             .then(responce => {
-                console.log()
                 responce.data.generalData.text = JSON.parse(responce.data.generalData.text)
-                
-                // http://127.0.0.1:8000/media/uploads/posts/2023/755996403486998_altqimx.jpg
-                
                 setPost(responce.data.generalData)
-
                 setImagesURLs(responce.data.articleImages)
                 if (!imagesURLs){
                     setImagesURLs([])

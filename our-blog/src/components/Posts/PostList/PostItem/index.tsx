@@ -18,14 +18,11 @@ interface IProp {
     date: string
 }
 
-
-
 export default function Item({ title, views, urlImg, text, id, date }: IProp) {
     
-
-    // console.log(text);
-    
-    const description = text.filter((obj: ObjProp) => obj["type"] === "text").map(obj => obj['text'])
+    const arrayText = text.filter((obj: ObjProp) => obj["type"] === "text")
+    arrayText.shift()
+    const description = arrayText.map(obj => obj['text'])
       
 
     function clickHandler(e: any) {
@@ -35,9 +32,11 @@ export default function Item({ title, views, urlImg, text, id, date }: IProp) {
     
     return( 
         <div className="Post-Item"> 
-            <Link to={`/posts/${id}`}><span className="Title" onClick={clickHandler}>{title}</span></Link>
-            <p className="Description">{description}</p>
-            <img src={urlImg} alt={title} className="Post-Img"></img>
+            <Link to={`/posts/${id}`}><span className="Title" onClick={clickHandler}>{title}</span>
+                <p className="Description">{description}</p>
+                <img src={urlImg} alt={title} className="Post-Img"></img>
+            </Link>
+
             <div className="Date">{date}</div> 
             <div className="Views"> <AiOutlineEye/> { views}</div>
         </div> 

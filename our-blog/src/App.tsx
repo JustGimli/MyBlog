@@ -9,6 +9,7 @@ import Posts from './components/Posts/posts';
 import Post from './components/Posts/OnePost/itemPost';
 import CommandField from './components/MakePost/CommandField';
 import FormItem from './components/admin/form';
+import ProtectedRoute from './components/MakePost/protectedRoute';
 
 import { Token } from './components/admin/form/context/token';
 
@@ -37,10 +38,9 @@ function App() {
                 <Route path='/' errorElement={<ErrorPage/>} element={<MainPage />}></Route> 
                 <Route path='/posts' errorElement={<ErrorPage/>} element={<Posts/>} ></Route>
                 <Route path='/posts/:id' errorElement={<ErrorPage/>} element={<Post/>} ></Route>
-                
-                    <Route path='/make-post' errorElement={<ErrorPage/>} element={<CommandField/>} ></Route>
-                    <Route path='/login' errorElement={<ErrorPage/>} element={<FormItem/>} ></Route> 
-                
+                <Route path='/make-post' errorElement={<ErrorPage/>} element={<ProtectedRoute><CommandField/></ProtectedRoute>} ></Route>
+                <Route path='/login' errorElement={<ErrorPage/>} element={<FormItem/>} ></Route> 
+                <Route path='*' element={<ErrorPage/>}></Route>
             </Routes> 
         </BrowserRouter> 
         </Token.Provider>

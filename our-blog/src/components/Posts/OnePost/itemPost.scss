@@ -7,11 +7,12 @@
     color: white;
 
     .Article-Img {
+        position: relative;
         object-fit: cover;
         width: 80%;
         border: 5px solid crimson;
         border-radius: 6px;
-        
+        margin: 10px 10%;
     }
 
     .Article-Title {
