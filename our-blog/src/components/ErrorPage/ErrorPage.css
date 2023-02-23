@@ -1,0 +1,21 @@
+
+.error-page {
+    margin-top: 20%;
+}
+
+.wrapper {
+    display: flex;
+    justify-content: center;
+
+}
+
+.oops {
+    color: crimson;
+    font-size: 40px;
+}
+
+.message {
+    padding-top: 10px;
+    color: white;
+    font-size: 20px;
+}

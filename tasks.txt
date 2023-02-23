@@ -4,4 +4,9 @@ deploy
 
 link from posts
 
+delete
+more languages
+error page
+
+
 navbar

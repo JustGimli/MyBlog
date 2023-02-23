@@ -3,7 +3,9 @@ import React, { useContext } from "react";
 
 import { Token, TokenContext } from "../admin/form/context/token";
 
-export default function ProtectedRoute({children}) {
+
+
+export default function ProtectedRoute({children}: any) {
     const {token} = useContext(Token) as TokenContext
     if (token === '') {
         return <Navigate to="/error" replace />

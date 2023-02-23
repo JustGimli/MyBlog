@@ -9,10 +9,10 @@ const DeleteElement = ({ idx, deleteElement }) => {
   return (
     <div className='Delete-main'>
       <div className="dropdown">
-                <MdOutlineDeleteOutline className="icon" id='addArea' />
-                <div className="dropdown-content">
+                <MdOutlineDeleteOutline className="icon" id='addArea' onClick={e => deleteElement(idx)}/>
+                {/* <div className="dropdown-content">
                     <a href="#" onClick={e => deleteElement(idx)}>Удалить</a>
-                </div>
+                </div> */}
             </div>
     </div>
   )
