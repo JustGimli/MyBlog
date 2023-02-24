@@ -69,9 +69,6 @@ class PostArticle(APIView):
         title = request.data.get( 'generalData[title]' , False )
         text = request.data.get(  'generalData[text]', False )
         photo = request.data.get(  'generalData[photo]', False )
-
-        print(title, text, photo)
-
         newData = { 'title': title, 'text': text, 'photo': photo }
         newPost = PostSerializer(data=newData)
         if newPost.is_valid():

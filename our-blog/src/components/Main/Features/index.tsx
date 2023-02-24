@@ -21,6 +21,7 @@ export default function Featured(props: any) {
         <section className="Features" id="features">
             <div className="max-width">
                 <h2 className="title"> My Features
+                
                 <p>‒‒ <span>i can do a lot&gt;&lt;</span> ‒‒</p></h2>
                 <div className="Features-list" >
                 {listItem}

@@ -67,12 +67,12 @@ const part = {
           generator: polygonPathName,
           options: {
             sides: 6,
-            turnSteps: 50,
+            turnSteps: 30,
             angle: 30
           }
         },
         random: false,
-        speed: 10,
+        speed: 3,
         straight: true,
         trail: {
           fillColor: "#000",

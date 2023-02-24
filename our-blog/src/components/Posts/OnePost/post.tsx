@@ -61,10 +61,9 @@ export default function Article({ title, text, photo, date, imagesURLs }: IProp)
 
                 case 'header':
                     
-                    const imageArea = <h1 className="header">{ text[item]['header'] }</h1>
+                    const imageArea = <h2 className="header">{ text[item]['header'] }</h2>
                     setData((prevData) => [...prevData, imageArea])
-                        
-                    
+
                     break;
                 default:
                     console.error("Not found parse")

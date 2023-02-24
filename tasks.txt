@@ -1,12 +1,6 @@
-meta
-balls
+
 deploy
-
-link from posts
-
-delete
-more languages
-error page
-
-
-navbar
+ `gunicorn/ Ngix
+ - docker image
+ -django settings
+ -react build

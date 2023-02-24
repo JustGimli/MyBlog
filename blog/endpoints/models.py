@@ -35,7 +35,8 @@ class Skill(models.Model):
 class Character(models.Model):
     name = models.CharField(unique=True, max_length=50)
 
+
 class Image(models.Model):
     post_id = models.ForeignKey(Post, on_delete=models.CASCADE)
-    image = models.ImageField(blank=True, null=True, upload_to=f"uploads/posts/%Y" ) # Этот адрес нужно запоминать в бд
+    image = models.ImageField(blank=True, null=True, upload_to=f"uploads/posts/%Y" )
 
