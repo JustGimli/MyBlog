@@ -1,0 +1,17 @@
+cd /mnt/c/    # переход на диск с
+	/mnt/c/allAnotherFiles/Programming/Python/Applications/Сайт-визитка/MyBlog/blog
+
+
+docker build . -t docker-django-v0.0   # Создание docker image по файлу Dockerfile с назавнием docker-django-v0.0
+
+
+docker pull image-name  # Обновляет image
+
+
+Docker-репозиторий позволяет хранить одну или несколько версий определенного docker-образа. Образ может иметь одну или более версий (в терминологии docker версия называется “тэг”). Docker-образ можно сравнить с git-репозиторием. Git-репозиторий может быть размещен, например, на GitHub, или на других аналогичных сервисах (Gitlab, BitBucket и т. д.). Никто не может помешать вам хранить git-репозиторий с кодом на собственном сервисе.
+
+
+
+docker run -d -p 5000:5000 --restart=always --name blog docker-django-v0.0  # Создание лок репо с именем container blog 
+
+justhocon   stasmiholap0@gmail.com   Drf43sdrf

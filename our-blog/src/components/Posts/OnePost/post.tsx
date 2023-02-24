@@ -7,9 +7,11 @@ import { useEffectOnce } from "./useEffectOnce";
 interface ObjProp {
     'type'?: string,
     'text'?: string,
-    'code': string | '';
+    'code': string | '',
     'image'?: string,
     'language'?: string
+    'title'?: string,
+    'header'?: string
 }
 
 interface IProp {
@@ -27,17 +29,15 @@ export default function Article({ title, text, photo, date, imagesURLs }: IProp)
 
         let isTitleImage = true;
         let photoIDX = 0;
-        let isTitle = true
+        
         for (const item in text) {
 
             switch (text[item]['type']) {
                 case 'text':
-                    if (isTitle) {
-                        isTitle = false
-                    }else {
-                        const areaText = <div className="Text-Wrapper"><div className="textBlock">{text[item]['text']}</div></div> 
-                        setData((prevData) => [...prevData, areaText])   
-                    }
+                    
+                    const areaText = <div className="Text-Wrapper"><div className="textBlock">{text[item]['text']}</div></div> 
+                    setData((prevData) => [...prevData, areaText])   
+                    
                     break;
                 case 'code':
                     
@@ -56,6 +56,14 @@ export default function Article({ title, text, photo, date, imagesURLs }: IProp)
                         photoIDX += 1 
                         
                     }
+                    
+                    break;
+
+                case 'header':
+                    
+                    const imageArea = <h1 className="header">{ text[item]['header'] }</h1>
+                    setData((prevData) => [...prevData, imageArea])
+                        
                     
                     break;
                 default:
