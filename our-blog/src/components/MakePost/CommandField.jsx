@@ -7,7 +7,7 @@ import PostElements from './MakePosts';
 
 
 const CommandField = () => {
-    const [postElements, setPostElements] = useState([]); // Хранит последовательность элементов для текущего поста
+    const [postElements, setPostElements] = useState([{'type': 'title', 'title': ''}]); // Хранит последовательность элементов для текущего поста
     const {token} = useContext(Token)
 
     const changeElementContent = useCallback((idx, updatedData) => {
@@ -53,8 +53,26 @@ const CommandField = () => {
         let elements = localStorage.getItem('elements');
         if (elements){
             elements = JSON.parse(elements);
-            setPostElements(elements); 
-        }
+
+            let titleExists = false;
+            
+
+            for(let i=0; i < elements.length; i++) {
+                const element = elements[i];
+                if (element.type == 'title') {
+                    titleExists = true
+                }
+            }
+
+            if (titleExists) {
+                setPostElements(elements); 
+            } else {
+                // console.log('Baaaad');
+                elements.unshift({'type': 'title', 'title': ''});
+            }
+            
+            
+        } 
     }, [])
 
     function handlePost(e) {
@@ -79,7 +97,7 @@ const CommandField = () => {
         const sendData = {
             "generalData": {
                 "photo": file,
-                "title": postElements.find(obj => obj.type === "text")['text'],
+                "title": postElements[0].title,
                 "text": JSON.stringify(postElements),
             }, 
             "articleImages": {
@@ -92,7 +110,7 @@ const CommandField = () => {
                 "Content-Type": "multipart/form-data",
                 Authorization: `Token ${token}`
         }})
-        setPostElements([])
+        setPostElements([{'type': 'title', 'title': ''}])
         localStorage.setItem('elements', '');
     }
 
