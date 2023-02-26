@@ -3,7 +3,7 @@ from django.urls import path, include
 from rest_framework.urlpatterns import format_suffix_patterns
 
 
-from .views import ListPostsView, PostView, UpdateCountViews, ContributorViews,  FeaturesViews, SkillViews,  UserViews, CharactersViews, PostArticle
+from .views import ListPostsView, PostView, UpdateCountViews, ContributorViews,  FeaturesViews, SkillViews,  UserViews, CharactersViews, PostArticle, index
 
 
 urlpatterns = [
