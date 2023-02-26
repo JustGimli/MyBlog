@@ -51,7 +51,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
-    'debug_toolbar'
+    # 'debug_toolbar'
     
 ]
 
