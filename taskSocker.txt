@@ -1,0 +1,12 @@
+sudo -H pip3 install --upgrade pip
+sudo -H pip3 install virtualenv
+mkdir ~/cloudproject
+cd ~/cloudproject
+virtualenv cloudenv
+source cloudenv/bin/activate
+pip install django gunicorn psycopg2-binary // requiremetn
+
+~/cloudproject/manage.py migrate
+deactivate
+
+sudo nano /etc/systemd/system/gunicorn.service

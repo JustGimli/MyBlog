@@ -24,6 +24,7 @@ SECRET_KEY = 'django-insecure-o$)i+s69qyv6_9g+8c+ek4oib=m=qkf+6it%@&acm5&&ctz^xc
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+# ALLOWED_HOSTS = ['127.0.0.1']
 
 CORS_ORIGIN_ALLOW_ALL = True
 
@@ -103,6 +104,16 @@ DATABASES = {
     }
 }
 
+# DATABASES = {
+# 'default': {
+# 'ENGINE': 'django.db.backends.postgresql_psycopg2',
+# 'NAME': 'cloudproject',
+# 'USER': 'clouduser',
+# 'PASSWORD': 'password',
+# 'HOST': 'localhost',
+# 'PORT': '',
+# }
+# }
 
 # Password validation
 # https://docs.djangoproject.com/en/4.1/ref/settings/#auth-password-validators
@@ -145,7 +156,8 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/4.1/howto/static-files/
 
-STATIC_URL = 'static/'
+STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static/')  #for ngix
 LOCAL_APPS = ['media']
 
 # Default primary key field type
