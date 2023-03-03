@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = os.getenv("DJANGO_SECRET_KEY", get_random_secret_key())
 
 DEBUG = os.getenv("DEBUG", "False") == "True"
-ALLOWED_HOSTS =  os.getenv("DJANGO_ALLOWED_HOST", "127.0.0.1,localhost").split(",")
+ALLOWED_HOSTS =  os.getenv("DJANGO_ALLOWED_HOST", "127.0.0.1,localhost,192.168.0.100").split(",")
 DEVELOPMENT_MODE = os.getenv("DEVELOPMENT_MODE", "True") == "True"
 
 # DEBUG = True
@@ -21,10 +21,11 @@ SESSION_COOKIE_SECURE = True
 CSRF_COOKIE_SECURE = True
 SESSION_EXPIRE_AT_BROWSER_CLOSE = True
 
-CORS_ORIGIN_ALLOW_ALL = True
+# CORS_ORIGIN_ALLOW_ALL = True
 
 CORS_ORIGIN_WHITELIST = (
        'http://localhost:3000',
+       'http://192.168.0.100:3000'
 )
 
 CORS_ALLOW_METHODS = [
@@ -51,7 +52,7 @@ INSTALLED_APPS = [
     'corsheaders',
     'rest_framework',
     'rest_framework.authtoken',
-    # 'debug_toolbar'
+    'debug_toolbar'
     
 ]
 

@@ -8,7 +8,7 @@ from django.conf import settings
 from rest_framework.authtoken.views import obtain_auth_token
 
 urlpatterns = ([
-    path('notforu/', admin.site.urls),
+    path('admin/', admin.site.urls),
     path('', include("endpoints.urls")),
     path('token/', obtain_auth_token),
     re_path(r'^media/(?P<path>.*)$', serve,{'document_root':settings.MEDIA_ROOT}), 
