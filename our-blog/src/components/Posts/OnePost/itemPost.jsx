@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 
-import axios from "axios";
+// import axios from "axios";
+import axios from "../../../api/axios"; 
 
 import Article from "./post";
 
@@ -15,7 +16,7 @@ export default function SetArticle(props) {
 
 
     useEffect(() => {
-        axios.get(`http://127.0.0.1:8000/posts/${params.id}/`)
+        axios.get(`posts/${params.id}/`)
             .then(responce => {
                 responce.data.generalData.text = JSON.parse(responce.data.generalData.text)
                 setPost(responce.data.generalData)
