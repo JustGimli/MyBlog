@@ -5,7 +5,7 @@ package-lock
 /node_modules
 /.pnp
 .pnp.js
-tsconfig.json
+
 # testing
 /coverage
 
